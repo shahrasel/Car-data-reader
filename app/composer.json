@@ -1,0 +1,12 @@
+{
+  "autoload": {
+    "psr-4": {
+      "": "src"
+    }
+  },
+  "require": {
+    "ext-pdo": "*",
+    "vlucas/phpdotenv": "^5.5",
+    "squizlabs/php_codesniffer": "3.5.*"
+  }
+}
