@@ -1,44 +1,61 @@
 <?php
-use Dotenv\Dotenv;
-use Service\CsvManager;
-use Service\DbConnectionManager;
-use Service\DbManager;
+
+use Controller\CarController;
+use Service\CarManager;
 
 require './vendor/autoload.php';
 
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+$bootstrap = new Bootstrap();
 
-if($_ENV['APP_ENV'] == 'dev') {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+$bootstrap->loadDotEnv();
+$bootstrap->loadConfig();
+$pdoConnection = $bootstrap->loadDBConnection();
+
+//header("Content-type: application/json; charset=UTF-8");
+
+$parts = explode("/", $_SERVER["REQUEST_URI"]);
+
+/*if ($parts[1] != "cars") {
+    http_response_code(404);
+    exit;
 }
 
-$pdoConnection = (new DbConnectionManager($_ENV['MYSQL_HOST'], $_ENV['MYSQL_PORT'], $_ENV['MYSQL_DATABASE'], $_ENV['MYSQL_ROOT_USER'], $_ENV['MYSQL_ROOT_PASSWORD']))->DbConnection();
+$id = $parts[2] ?? null;*/
+
+print_r($parts);
 
 
-const CAR_PROPERTIES = ['year', 'brand','model', 'location', 'door_no', 'seat_no', 'transmission', 'fuel_type', 'license', 'car_type_group', 'car_type', 'car_km', 'width', 'height', 'length'];
+/*set_error_handler("\\Service\\ErrorManager::handleError");
+set_exception_handler("\\Service\\ErrorManager::handleException");
 
-try {
-    $csvArr = (new CsvManager(__DIR__ . '/src/Resource/source-1.csv'))->csvToArray();
-    (new DbManager($pdoConnection, CAR_PROPERTIES, $csvArr))->storeInDb();
-} catch (Exception $e) {
-    return $e->getMessage();
+header("Content-type: application/json; charset=UTF-8");
+
+$parts = explode("/", $_SERVER["REQUEST_URI"]);
+
+if ($parts[1] != "cars") {
+    http_response_code(404);
+    exit;
 }
 
-try {
-    $jsonArr = (new \Service\JsonManager(__DIR__ . '/src/Resource/source-2.json'))->jsonToArray();
+$id = $parts[2] ?? null;
 
-    (new DbManager($pdoConnection, CAR_PROPERTIES, $jsonArr))->storeInDb();
-} catch (Exception $e) {
-    return $e->getMessage();
-}
+print_r($parts);
 
-try {
-    $jsonArr = (new \Service\JsonManager(__DIR__ . '/src/Resource/source-3.json'))->jsonToArray();
+$gateway = new CarManager($pdoConnection);
 
-    (new DbManager($pdoConnection, CAR_PROPERTIES, $jsonArr))->storeInDb();
-} catch (Exception $e) {
-    return $e->getMessage();
+$controller = new CarController($gateway);
+
+$controller->processRequest($_SERVER["REQUEST_METHOD"], $id);*/
+
+
+
+
+
+
+if(!empty($_REQUEST['first_load'])) {
+    if ($_REQUEST['first_load'] == true) {
+        $bootstrap->readCsv('source-1.csv');
+        $bootstrap->readJson('source-2.json');
+        $bootstrap->readJson('source-3.json');
+    }
 }
