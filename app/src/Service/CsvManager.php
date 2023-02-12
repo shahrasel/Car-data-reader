@@ -34,14 +34,10 @@ class CsvManager
                     CarManager::arrayKeyReplace(array_keys($carList)), $carList
                 );
 
-                $validationManager = new ValidationManager();
-                $errors = $validationManager->validateData(
-                    $carUniKeyList,
-                    $this->pdoConnection
-                );
+                $errors = $this->dataValidation($carUniKeyList);
 
                 if ( ! empty($errors)) {
-                    $errors[] = "$this->filePath has an error at the index of: $count";
+                    $errors[] = "$this->filePath has an error at index: $count";
                     $allErrors[] = $errors;
                 }
                 else {
@@ -60,5 +56,15 @@ class CsvManager
             $allErrors[] = "File $this->filePath is not readable";
             return $allErrors;
         }
+    }
+
+    public function dataValidation(array $carUniKeyList): array
+    {
+        $validationManager = new ValidationManager();
+        $errors = $validationManager->validateData(
+            $carUniKeyList,
+            $this->pdoConnection
+        );
+        return $errors;
     }
 }

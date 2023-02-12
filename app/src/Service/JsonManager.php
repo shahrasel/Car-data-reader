@@ -30,12 +30,14 @@ class JsonManager
             $allErrors = [];
             foreach($carLists as $carList) {
                 $count++;
-                $carUniKeyList = array_combine(CarManager::arrayKeyReplace(array_keys($carList)), $carList);
-                $validationManager = new ValidationManager();
-                $errors = $validationManager->validateData($carUniKeyList, $this->pdoConnection);
+                $carUniKeyList =
+                    array_combine(
+                        CarManager::arrayKeyReplace(array_keys($carList)),
+                        $carList);
+                $errors = $this->dataValidation($carUniKeyList);
 
                 if ( ! empty($errors)) {
-                    $errors[] = "$this->filePath has an error at the index of: $count";
+                    $errors[] = "$this->filePath has an error at index: $count";
                     $allErrors[] = $errors;
                 }
                 else {
@@ -54,5 +56,13 @@ class JsonManager
             $allErrors[] = "File $this->filePath is not readable";
             return $allErrors;
         }
+    }
+
+    public function dataValidation(array $carUniKeyList): array
+    {
+        $validationManager = new ValidationManager();
+        $errors = $validationManager
+            ->validateData($carUniKeyList, $this->pdoConnection);
+        return $errors;
     }
 }

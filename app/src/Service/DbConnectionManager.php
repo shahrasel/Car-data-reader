@@ -13,8 +13,13 @@ class DbConnectionManager
     private string $userName;
     private string $password;
 
-    public function __construct(string $server, string $port, string $database, string $userName, string $password)
-    {
+    public function __construct (
+        string $server,
+        string $port,
+        string $database,
+        string $userName,
+        string $password
+    ) {
 
         $this->server = $server;
         $this->port = $port;

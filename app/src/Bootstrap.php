@@ -14,7 +14,7 @@ class Bootstrap
     }
 
     public function loadConfig() {
-        if($_ENV['APP_ENV'] == 'dev') {
+        if ($_ENV['APP_ENV'] == 'dev') {
             ini_set('display_errors', 1);
             ini_set('display_startup_errors', 1);
             error_reporting(E_ALL);
@@ -51,7 +51,7 @@ class Bootstrap
         $jsonErrors1 = $this->readJson('source-2.json', $pdoConnection);
         $jsonErrors2 = $this->readJson('source-3.json', $pdoConnection);
 
-        if(!empty($csvErrors) || !empty($jsonErrors1) || !empty($jsonErrors2)) {
+        if (!empty($csvErrors) || !empty($jsonErrors1) || !empty($jsonErrors2)) {
             if (!empty($csvErrors))
                 $errorHandlerArray['csv_errors'] = $csvErrors;
 

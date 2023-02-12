@@ -6,7 +6,11 @@
   },
   "require": {
     "ext-pdo": "*",
-    "vlucas/phpdotenv": "^5.5",
-    "squizlabs/php_codesniffer": "3.5.*"
+    "vlucas/phpdotenv": "^5.5"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "3.*",
+    "phpstan/phpstan": "^1.9",
+    "phpunit/phpunit": "^9"
   }
 }

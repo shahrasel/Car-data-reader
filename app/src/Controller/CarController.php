@@ -8,18 +8,23 @@ use Service\ValidationManager;
 
 class CarController
 {
-    public function __construct(private CarManager $carManager, private PDO $pdoConnection)
-    {
+    private CarManager $carManager;
+    private PDO $pdoConnection;
+
+    public function __construct(
+        CarManager $carManager,
+        PDO $pdoConnection
+    ) {
+        $this->carManager = $carManager;
+        $this->pdoConnection = $pdoConnection;
     }
 
     public function processRequest(string $method, $endpoint, ?string $id): void
     {
         if ($id) {
             $this->processResourceRequest($method, $id);
-        } else {
-            if($endpoint == 'cars') {
-                $this->processCollectionRequest($method);
-            }
+        } elseif ($endpoint == 'cars') {
+            $this->processCollectionRequest($method);
         }
     }
 
@@ -38,38 +43,9 @@ class CarController
                 echo json_encode($car);
                 break;
 
-            case "PATCH":
-                $data = (array) json_decode(file_get_contents("php://input"), true);
-
-                $validationManager = new ValidationManager();
-                $errors = $validationManager->validateData($data);
-
-                if ( ! empty($errors)) {
-                    http_response_code(422);
-                    echo json_encode(["errors" => $errors]);
-                    break;
-                }
-
-                $rows = $this->carManager->update($car, $data);
-
-                echo json_encode([
-                    "message" => "Car $id is updated",
-                    "rows" => $rows
-                ]);
-                break;
-
-            case "DELETE":
-                $rows = $this->carManager->delete($id);
-
-                echo json_encode([
-                    "message" => "Car $id is deleted",
-                    "rows" => $rows
-                ]);
-                break;
-
             default:
                 http_response_code(405);
-                header("Allow: GET, PATCH, DELETE");
+                header("Allow: GET");
         }
     }
 
@@ -81,10 +57,14 @@ class CarController
                 break;
 
             case "POST":
-                $data = (array) json_decode(file_get_contents("php://input"), true);
+                $data = (array) json_decode(file_get_contents("php://input"),
+                    true
+                );
 
                 $validationManager = new ValidationManager();
-                $errors = $validationManager->validateData($data, $this->pdoConnection);
+                $errors = $validationManager->validateData($data,
+                    $this->pdoConnection
+                );
 
                 if ( ! empty($errors)) {
                     http_response_code(422);

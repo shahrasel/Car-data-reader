@@ -6271,3 +6271,1431 @@ Time                 Id Command    Argument
 2023-02-12T17:06:59.485892Z	  851 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
 2023-02-12T17:06:59.487983Z	  852 Quit	
 2023-02-12T17:06:59.488171Z	  851 Quit	
+2023-02-12T18:46:26.826069Z	  853 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T18:46:26.845623Z	  853 Prepare	SELECT * FROM car
+2023-02-12T18:46:26.847969Z	  853 Execute	SELECT * FROM car
+2023-02-12T18:46:26.851635Z	  853 Close stmt	
+2023-02-12T18:46:26.855228Z	  853 Quit	
+2023-02-12T18:46:46.736671Z	  854 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:46:46.739608Z	  854 Query	SELECT @@version, @@version_comment
+2023-02-12T18:46:46.741271Z	  854 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T18:46:46.742885Z	  854 Query	SET lc_messages = 'en_US'
+2023-02-12T18:46:46.746487Z	  855 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:46:46.748947Z	  854 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T18:46:46.752207Z	  854 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T18:46:46.753682Z	  854 Query	SELECT CURRENT_USER()
+2023-02-12T18:46:46.755477Z	  854 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T18:46:46.757716Z	  854 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='EVENT'
+2023-02-12T18:46:46.759649Z	  854 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T18:46:46.762580Z	  855 Quit	
+2023-02-12T18:46:46.762707Z	  854 Quit	
+2023-02-12T18:46:46.798823Z	  856 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:46:46.801903Z	  856 Query	SELECT @@version, @@version_comment
+2023-02-12T18:46:46.804184Z	  856 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T18:46:46.805617Z	  856 Query	SET lc_messages = 'en_US'
+2023-02-12T18:46:46.808959Z	  857 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:46:46.811019Z	  857 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:46:46.813532Z	  856 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T18:46:46.814937Z	  857 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:46:46.816932Z	  856 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T18:46:46.818664Z	  856 Query	SELECT CURRENT_USER()
+2023-02-12T18:46:46.820278Z	  856 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T18:46:46.822841Z	  856 Query	SHOW MASTER LOGS
+2023-02-12T18:46:46.894231Z	  857 Quit	
+2023-02-12T18:46:46.894349Z	  856 Quit	
+2023-02-12T18:46:50.828803Z	  858 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T18:46:50.844905Z	  858 Prepare	SELECT * FROM car
+                WHERE year = ?
+                and brand = ?
+                and model = ?
+                and location <=> ?
+                and door_no <=> ?
+                and seat_no <=> ?
+                and transmission <=> ?
+                and fuel_type <=> ?
+                and license <=> ?
+                and car_type_group <=> ?
+                and car_type <=> ?
+                and car_km <=> ?
+                and width <=> ?
+                and height <=> ?
+                and length <=> ?
+2023-02-12T18:46:50.848814Z	  858 Execute	SELECT * FROM car
+                WHERE year = '2023'
+                and brand = 'BMW'
+                and model = 'abc'
+                and location <=> NULL
+                and door_no <=> NULL
+                and seat_no <=> NULL
+                and transmission <=> NULL
+                and fuel_type <=> NULL
+                and license <=> NULL
+                and car_type_group <=> NULL
+                and car_type <=> NULL
+                and car_km <=> NULL
+                and width <=> NULL
+                and height <=> NULL
+                and length <=> NULL
+2023-02-12T18:46:50.852667Z	  858 Close stmt	
+2023-02-12T18:46:50.853947Z	  858 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T18:46:50.856580Z	  858 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2023', 'BMW', 'abc', NULL, NULL, 
+                           NULL, NULL, NULL, NULL, 
+                           NULL, NULL, NULL, NULL, 
+                           NULL, NULL)
+2023-02-12T18:46:50.866192Z	  858 Close stmt	
+2023-02-12T18:46:50.867268Z	  858 Quit	
+2023-02-12T18:46:56.155545Z	  859 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:46:56.158784Z	  859 Query	SELECT @@version, @@version_comment
+2023-02-12T18:46:56.161227Z	  859 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T18:46:56.162672Z	  859 Query	SET lc_messages = 'en_US'
+2023-02-12T18:46:56.166879Z	  860 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:46:56.168894Z	  860 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:46:56.171140Z	  860 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T18:46:56.174800Z	  859 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T18:46:56.176133Z	  860 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:46:56.178261Z	  860 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T18:46:56.182259Z	  859 Query	SELECT CURRENT_USER()
+2023-02-12T18:46:56.183919Z	  859 Query	SHOW GRANTS
+2023-02-12T18:46:56.190301Z	  859 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T18:46:56.192324Z	  859 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T18:46:56.196989Z	  859 Query	SELECT DATABASE()
+2023-02-12T18:46:56.198946Z	  859 Init DB	oscar_code_challenge
+2023-02-12T18:46:56.200958Z	  859 Query	SELECT * FROM `car` LIMIT 0, 25
+2023-02-12T18:46:56.203761Z	  859 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T18:46:56.206551Z	  859 Query	SELECT @@lower_case_table_names
+2023-02-12T18:46:56.207950Z	  859 Query	SELECT *, `TABLE_SCHEMA`       AS `Db`, `TABLE_NAME`         AS `Name`, `TABLE_TYPE`         AS `TABLE_TYPE`, `ENGINE`             AS `Engine`, `ENGINE`             AS `Type`, `VERSION`            AS `Version`, `ROW_FORMAT`         AS `Row_format`, `TABLE_ROWS`         AS `Rows`, `AVG_ROW_LENGTH`     AS `Avg_row_length`, `DATA_LENGTH`        AS `Data_length`, `MAX_DATA_LENGTH`    AS `Max_data_length`, `INDEX_LENGTH`       AS `Index_length`, `DATA_FREE`          AS `Data_free`, `AUTO_INCREMENT`     AS `Auto_increment`, `CREATE_TIME`        AS `Create_time`, `UPDATE_TIME`        AS `Update_time`, `CHECK_TIME`         AS `Check_time`, `TABLE_COLLATION`    AS `Collation`, `CHECKSUM`           AS `Checksum`, `CREATE_OPTIONS`     AS `Create_options`, `TABLE_COMMENT`      AS `Comment` FROM `information_schema`.`TABLES` t WHERE `TABLE_SCHEMA` COLLATE utf8_general_ci IN ('oscar_code_challenge') AND t.`TABLE_NAME` COLLATE utf8_general_ci = 'car' ORDER BY Name ASC
+2023-02-12T18:46:56.211411Z	  859 Query	SELECT COUNT(*) FROM `oscar_code_challenge`.`car`
+2023-02-12T18:46:56.216219Z	  859 Query	SHOW WARNINGS
+2023-02-12T18:46:56.218227Z	  859 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car' AND IS_UPDATABLE = 'YES'
+2023-02-12T18:46:56.220395Z	  859 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:46:56.223499Z	  859 Query	SHOW INDEXES FROM `oscar_code_challenge`.`car`
+2023-02-12T18:46:56.226665Z	  859 Query	SELECT @@have_profiling
+2023-02-12T18:46:56.228222Z	  859 Query	SHOW CREATE TABLE `oscar_code_challenge`.`car`
+2023-02-12T18:46:56.234531Z	  859 Query	SHOW FULL COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:46:56.263454Z	  859 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T18:46:56.269191Z	  859 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:46:56.273360Z	  859 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T18:46:56.275706Z	  859 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T18:46:56.283435Z	  860 Quit	
+2023-02-12T18:46:56.283521Z	  859 Quit	
+2023-02-12T18:46:56.389172Z	  861 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:46:56.390882Z	  861 Query	SELECT @@version, @@version_comment
+2023-02-12T18:46:56.392896Z	  861 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T18:46:56.394394Z	  861 Query	SET lc_messages = 'en_US'
+2023-02-12T18:46:56.398600Z	  862 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:46:56.400232Z	  862 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:46:56.402168Z	  861 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T18:46:56.403584Z	  862 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:46:56.405627Z	  861 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T18:46:56.407608Z	  861 Query	SELECT CURRENT_USER()
+2023-02-12T18:46:56.408999Z	  861 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T18:46:56.411637Z	  862 Quit	
+2023-02-12T18:46:56.411764Z	  861 Quit	
+2023-02-12T18:46:59.990587Z	  863 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:46:59.994706Z	  863 Query	SELECT @@version, @@version_comment
+2023-02-12T18:46:59.996746Z	  863 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T18:46:59.998302Z	  863 Query	SET lc_messages = 'en_US'
+2023-02-12T18:47:00.001888Z	  864 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:47:00.003761Z	  864 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:47:00.005653Z	  864 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T18:47:00.008879Z	  863 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T18:47:00.010254Z	  864 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:47:00.012036Z	  864 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T18:47:00.016162Z	  863 Query	SELECT CURRENT_USER()
+2023-02-12T18:47:00.026436Z	  863 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T18:47:00.028987Z	  863 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T18:47:00.034349Z	  863 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T18:47:00.038918Z	  863 Query	SELECT DATABASE()
+2023-02-12T18:47:00.041356Z	  863 Init DB	oscar_code_challenge
+2023-02-12T18:47:00.043971Z	  863 Query	SELECT * FROM `car`  
+ORDER BY `car`.`id` ASC LIMIT 0, 25
+2023-02-12T18:47:00.047851Z	  863 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T18:47:00.050979Z	  863 Query	SELECT @@lower_case_table_names
+2023-02-12T18:47:00.053381Z	  863 Query	SELECT *, `TABLE_SCHEMA`       AS `Db`, `TABLE_NAME`         AS `Name`, `TABLE_TYPE`         AS `TABLE_TYPE`, `ENGINE`             AS `Engine`, `ENGINE`             AS `Type`, `VERSION`            AS `Version`, `ROW_FORMAT`         AS `Row_format`, `TABLE_ROWS`         AS `Rows`, `AVG_ROW_LENGTH`     AS `Avg_row_length`, `DATA_LENGTH`        AS `Data_length`, `MAX_DATA_LENGTH`    AS `Max_data_length`, `INDEX_LENGTH`       AS `Index_length`, `DATA_FREE`          AS `Data_free`, `AUTO_INCREMENT`     AS `Auto_increment`, `CREATE_TIME`        AS `Create_time`, `UPDATE_TIME`        AS `Update_time`, `CHECK_TIME`         AS `Check_time`, `TABLE_COLLATION`    AS `Collation`, `CHECKSUM`           AS `Checksum`, `CREATE_OPTIONS`     AS `Create_options`, `TABLE_COMMENT`      AS `Comment` FROM `information_schema`.`TABLES` t WHERE `TABLE_SCHEMA` COLLATE utf8_general_ci IN ('oscar_code_challenge') AND t.`TABLE_NAME` COLLATE utf8_general_ci = 'car' ORDER BY Name ASC
+2023-02-12T18:47:00.058635Z	  863 Query	SELECT COUNT(*) FROM `oscar_code_challenge`.`car`
+2023-02-12T18:47:00.061907Z	  863 Query	SHOW WARNINGS
+2023-02-12T18:47:00.063880Z	  863 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car' AND IS_UPDATABLE = 'YES'
+2023-02-12T18:47:00.066676Z	  863 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:47:00.072913Z	  863 Query	SHOW INDEXES FROM `oscar_code_challenge`.`car`
+2023-02-12T18:47:00.081452Z	  863 Query	SHOW CREATE TABLE `oscar_code_challenge`.`car`
+2023-02-12T18:47:00.086780Z	  863 Query	SHOW FULL COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:47:00.128855Z	  863 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T18:47:00.132789Z	  863 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:47:00.137732Z	  863 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T18:47:00.141399Z	  863 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T18:47:00.148206Z	  864 Quit	
+2023-02-12T18:47:00.148405Z	  863 Quit	
+2023-02-12T18:47:00.248062Z	  865 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:47:00.249766Z	  865 Query	SELECT @@version, @@version_comment
+2023-02-12T18:47:00.251514Z	  865 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T18:47:00.252952Z	  865 Query	SET lc_messages = 'en_US'
+2023-02-12T18:47:00.255497Z	  866 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:47:00.257235Z	  866 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:47:00.259605Z	  865 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T18:47:00.261249Z	  866 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:47:00.263484Z	  865 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T18:47:00.265146Z	  865 Query	SELECT CURRENT_USER()
+2023-02-12T18:47:00.266294Z	  865 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T18:47:00.269200Z	  866 Quit	
+2023-02-12T18:47:00.269221Z	  865 Quit	
+2023-02-12T18:47:03.763431Z	  867 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:47:03.766397Z	  867 Query	SELECT @@version, @@version_comment
+2023-02-12T18:47:03.768918Z	  867 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T18:47:03.771047Z	  867 Query	SET lc_messages = 'en_US'
+2023-02-12T18:47:03.777051Z	  868 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:47:03.780251Z	  868 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:47:03.782742Z	  868 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T18:47:03.790336Z	  867 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T18:47:03.792416Z	  868 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:47:03.794390Z	  868 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T18:47:03.799055Z	  867 Query	SELECT CURRENT_USER()
+2023-02-12T18:47:03.810083Z	  867 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T18:47:03.813626Z	  867 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T18:47:03.817954Z	  867 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T18:47:03.822808Z	  867 Query	SELECT DATABASE()
+2023-02-12T18:47:03.825306Z	  867 Init DB	oscar_code_challenge
+2023-02-12T18:47:03.826909Z	  867 Query	SELECT * FROM `car`  
+ORDER BY `car`.`id` DESC LIMIT 0, 25
+2023-02-12T18:47:03.829443Z	  867 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T18:47:03.832957Z	  867 Query	SELECT @@lower_case_table_names
+2023-02-12T18:47:03.834662Z	  867 Query	SELECT *, `TABLE_SCHEMA`       AS `Db`, `TABLE_NAME`         AS `Name`, `TABLE_TYPE`         AS `TABLE_TYPE`, `ENGINE`             AS `Engine`, `ENGINE`             AS `Type`, `VERSION`            AS `Version`, `ROW_FORMAT`         AS `Row_format`, `TABLE_ROWS`         AS `Rows`, `AVG_ROW_LENGTH`     AS `Avg_row_length`, `DATA_LENGTH`        AS `Data_length`, `MAX_DATA_LENGTH`    AS `Max_data_length`, `INDEX_LENGTH`       AS `Index_length`, `DATA_FREE`          AS `Data_free`, `AUTO_INCREMENT`     AS `Auto_increment`, `CREATE_TIME`        AS `Create_time`, `UPDATE_TIME`        AS `Update_time`, `CHECK_TIME`         AS `Check_time`, `TABLE_COLLATION`    AS `Collation`, `CHECKSUM`           AS `Checksum`, `CREATE_OPTIONS`     AS `Create_options`, `TABLE_COMMENT`      AS `Comment` FROM `information_schema`.`TABLES` t WHERE `TABLE_SCHEMA` COLLATE utf8_general_ci IN ('oscar_code_challenge') AND t.`TABLE_NAME` COLLATE utf8_general_ci = 'car' ORDER BY Name ASC
+2023-02-12T18:47:03.837657Z	  867 Query	SELECT COUNT(*) FROM `oscar_code_challenge`.`car`
+2023-02-12T18:47:03.840321Z	  867 Query	SHOW WARNINGS
+2023-02-12T18:47:03.843013Z	  867 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car' AND IS_UPDATABLE = 'YES'
+2023-02-12T18:47:03.847221Z	  867 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:47:03.851252Z	  867 Query	SHOW INDEXES FROM `oscar_code_challenge`.`car`
+2023-02-12T18:47:03.857471Z	  867 Query	SHOW CREATE TABLE `oscar_code_challenge`.`car`
+2023-02-12T18:47:03.863777Z	  867 Query	SHOW FULL COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:47:03.906535Z	  867 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T18:47:03.911318Z	  867 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:47:03.915824Z	  867 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T18:47:03.918510Z	  867 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T18:47:03.926600Z	  868 Quit	
+2023-02-12T18:47:03.926916Z	  867 Quit	
+2023-02-12T18:47:04.025806Z	  869 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:47:04.028283Z	  869 Query	SELECT @@version, @@version_comment
+2023-02-12T18:47:04.030694Z	  869 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T18:47:04.033782Z	  869 Query	SET lc_messages = 'en_US'
+2023-02-12T18:47:04.037978Z	  870 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:47:04.039946Z	  870 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:47:04.041930Z	  869 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T18:47:04.043396Z	  870 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:47:04.045625Z	  869 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T18:47:04.047432Z	  869 Query	SELECT CURRENT_USER()
+2023-02-12T18:47:04.048957Z	  869 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T18:47:04.053239Z	  870 Quit	
+2023-02-12T18:47:04.053745Z	  869 Quit	
+2023-02-12T18:54:43.562589Z	  871 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T18:54:43.573192Z	  871 Prepare	SELECT * FROM car
+                WHERE year = ?
+                and brand = ?
+                and model = ?
+                and location <=> ?
+                and door_no <=> ?
+                and seat_no <=> ?
+                and transmission <=> ?
+                and fuel_type <=> ?
+                and license <=> ?
+                and car_type_group <=> ?
+                and car_type <=> ?
+                and car_km <=> ?
+                and width <=> ?
+                and height <=> ?
+                and length <=> ?
+2023-02-12T18:54:43.575641Z	  871 Execute	SELECT * FROM car
+                WHERE year = 'sdfsdfdsf'
+                and brand = 'BMW'
+                and model = 'abc'
+                and location <=> NULL
+                and door_no <=> NULL
+                and seat_no <=> NULL
+                and transmission <=> NULL
+                and fuel_type <=> NULL
+                and license <=> NULL
+                and car_type_group <=> NULL
+                and car_type <=> NULL
+                and car_km <=> NULL
+                and width <=> NULL
+                and height <=> NULL
+                and length <=> NULL
+2023-02-12T18:54:43.580118Z	  871 Close stmt	
+2023-02-12T18:54:43.581683Z	  871 Quit	
+2023-02-12T18:54:51.596070Z	  872 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:54:51.598198Z	  872 Query	SELECT @@version, @@version_comment
+2023-02-12T18:54:51.600392Z	  872 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T18:54:51.601955Z	  872 Query	SET lc_messages = 'en_US'
+2023-02-12T18:54:51.606014Z	  873 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:54:51.607722Z	  873 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:54:51.609563Z	  873 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T18:54:51.613958Z	  872 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T18:54:51.615741Z	  873 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:54:51.617074Z	  873 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T18:54:51.619921Z	  872 Query	SELECT CURRENT_USER()
+2023-02-12T18:54:51.627224Z	  872 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T18:54:51.629188Z	  872 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T18:54:51.634093Z	  872 Query	SHOW COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:54:51.641305Z	  872 Query	SELECT DATABASE()
+2023-02-12T18:54:51.643316Z	  872 Init DB	oscar_code_challenge
+2023-02-12T18:54:51.645274Z	  872 Query	SELECT * FROM `car` ORDER BY `id` DESC LIMIT 0, 25
+2023-02-12T18:54:51.648268Z	  872 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T18:54:51.650853Z	  872 Query	SELECT @@lower_case_table_names
+2023-02-12T18:54:51.652558Z	  872 Query	SELECT *, `TABLE_SCHEMA`       AS `Db`, `TABLE_NAME`         AS `Name`, `TABLE_TYPE`         AS `TABLE_TYPE`, `ENGINE`             AS `Engine`, `ENGINE`             AS `Type`, `VERSION`            AS `Version`, `ROW_FORMAT`         AS `Row_format`, `TABLE_ROWS`         AS `Rows`, `AVG_ROW_LENGTH`     AS `Avg_row_length`, `DATA_LENGTH`        AS `Data_length`, `MAX_DATA_LENGTH`    AS `Max_data_length`, `INDEX_LENGTH`       AS `Index_length`, `DATA_FREE`          AS `Data_free`, `AUTO_INCREMENT`     AS `Auto_increment`, `CREATE_TIME`        AS `Create_time`, `UPDATE_TIME`        AS `Update_time`, `CHECK_TIME`         AS `Check_time`, `TABLE_COLLATION`    AS `Collation`, `CHECKSUM`           AS `Checksum`, `CREATE_OPTIONS`     AS `Create_options`, `TABLE_COMMENT`      AS `Comment` FROM `information_schema`.`TABLES` t WHERE `TABLE_SCHEMA` COLLATE utf8_general_ci IN ('oscar_code_challenge') AND t.`TABLE_NAME` COLLATE utf8_general_ci = 'car' ORDER BY Name ASC
+2023-02-12T18:54:51.658068Z	  872 Query	SELECT COUNT(*) FROM `oscar_code_challenge`.`car`
+2023-02-12T18:54:51.663830Z	  872 Query	SHOW WARNINGS
+2023-02-12T18:54:51.665425Z	  872 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car' AND IS_UPDATABLE = 'YES'
+2023-02-12T18:54:51.667958Z	  872 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:54:51.674320Z	  872 Query	SHOW INDEXES FROM `oscar_code_challenge`.`car`
+2023-02-12T18:54:51.678743Z	  872 Query	SHOW CREATE TABLE `oscar_code_challenge`.`car`
+2023-02-12T18:54:51.684860Z	  872 Query	SHOW FULL COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:54:51.721636Z	  872 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T18:54:51.726219Z	  872 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:54:51.730212Z	  872 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T18:54:51.732543Z	  872 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T18:54:51.739685Z	  873 Quit	
+2023-02-12T18:54:51.740564Z	  872 Quit	
+2023-02-12T18:54:51.855985Z	  874 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:54:51.857823Z	  874 Query	SELECT @@version, @@version_comment
+2023-02-12T18:54:51.859653Z	  874 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T18:54:51.861225Z	  874 Query	SET lc_messages = 'en_US'
+2023-02-12T18:54:51.864182Z	  875 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:54:51.865697Z	  875 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:54:51.867589Z	  874 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T18:54:51.869205Z	  875 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:54:51.871958Z	  874 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T18:54:51.874231Z	  874 Query	SELECT CURRENT_USER()
+2023-02-12T18:54:51.876055Z	  874 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T18:54:51.878914Z	  875 Quit	
+2023-02-12T18:54:51.879491Z	  874 Quit	
+2023-02-12T18:56:20.098494Z	  876 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T18:56:20.108546Z	  876 Prepare	SELECT * FROM car
+                WHERE year = ?
+                and brand = ?
+                and model = ?
+                and location <=> ?
+                and door_no <=> ?
+                and seat_no <=> ?
+                and transmission <=> ?
+                and fuel_type <=> ?
+                and license <=> ?
+                and car_type_group <=> ?
+                and car_type <=> ?
+                and car_km <=> ?
+                and width <=> ?
+                and height <=> ?
+                and length <=> ?
+2023-02-12T18:56:20.111473Z	  876 Execute	SELECT * FROM car
+                WHERE year = 'sdfsdfdsf'
+                and brand = 'BMW'
+                and model = 'abc'
+                and location <=> NULL
+                and door_no <=> '1ss'
+                and seat_no <=> 'sdfdf'
+                and transmission <=> NULL
+                and fuel_type <=> NULL
+                and license <=> NULL
+                and car_type_group <=> NULL
+                and car_type <=> NULL
+                and car_km <=> NULL
+                and width <=> NULL
+                and height <=> NULL
+                and length <=> NULL
+2023-02-12T18:56:20.116302Z	  876 Close stmt	
+2023-02-12T18:56:20.118020Z	  876 Quit	
+2023-02-12T18:56:32.568579Z	  877 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:56:32.570985Z	  877 Query	SELECT @@version, @@version_comment
+2023-02-12T18:56:32.572900Z	  877 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T18:56:32.574454Z	  877 Query	SET lc_messages = 'en_US'
+2023-02-12T18:56:32.578515Z	  878 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:56:32.580270Z	  878 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:56:32.582088Z	  878 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T18:56:32.587139Z	  877 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T18:56:32.589355Z	  878 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:56:32.593188Z	  878 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T18:56:32.596897Z	  877 Query	SELECT CURRENT_USER()
+2023-02-12T18:56:32.604901Z	  877 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T18:56:32.607168Z	  877 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T18:56:32.610812Z	  877 Query	SHOW COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:56:32.615060Z	  877 Query	SELECT DATABASE()
+2023-02-12T18:56:32.616851Z	  877 Init DB	oscar_code_challenge
+2023-02-12T18:56:32.619579Z	  877 Query	SELECT * FROM `car` ORDER BY `id` DESC LIMIT 0, 25
+2023-02-12T18:56:32.623563Z	  877 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T18:56:32.628252Z	  877 Query	SELECT @@lower_case_table_names
+2023-02-12T18:56:32.629857Z	  877 Query	SELECT *, `TABLE_SCHEMA`       AS `Db`, `TABLE_NAME`         AS `Name`, `TABLE_TYPE`         AS `TABLE_TYPE`, `ENGINE`             AS `Engine`, `ENGINE`             AS `Type`, `VERSION`            AS `Version`, `ROW_FORMAT`         AS `Row_format`, `TABLE_ROWS`         AS `Rows`, `AVG_ROW_LENGTH`     AS `Avg_row_length`, `DATA_LENGTH`        AS `Data_length`, `MAX_DATA_LENGTH`    AS `Max_data_length`, `INDEX_LENGTH`       AS `Index_length`, `DATA_FREE`          AS `Data_free`, `AUTO_INCREMENT`     AS `Auto_increment`, `CREATE_TIME`        AS `Create_time`, `UPDATE_TIME`        AS `Update_time`, `CHECK_TIME`         AS `Check_time`, `TABLE_COLLATION`    AS `Collation`, `CHECKSUM`           AS `Checksum`, `CREATE_OPTIONS`     AS `Create_options`, `TABLE_COMMENT`      AS `Comment` FROM `information_schema`.`TABLES` t WHERE `TABLE_SCHEMA` COLLATE utf8_general_ci IN ('oscar_code_challenge') AND t.`TABLE_NAME` COLLATE utf8_general_ci = 'car' ORDER BY Name ASC
+2023-02-12T18:56:32.633912Z	  877 Query	SELECT COUNT(*) FROM `oscar_code_challenge`.`car`
+2023-02-12T18:56:32.637556Z	  877 Query	SHOW WARNINGS
+2023-02-12T18:56:32.639433Z	  877 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car' AND IS_UPDATABLE = 'YES'
+2023-02-12T18:56:32.641844Z	  877 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:56:32.647792Z	  877 Query	SHOW INDEXES FROM `oscar_code_challenge`.`car`
+2023-02-12T18:56:32.654181Z	  877 Query	SHOW CREATE TABLE `oscar_code_challenge`.`car`
+2023-02-12T18:56:32.659869Z	  877 Query	SHOW FULL COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:56:32.693887Z	  877 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T18:56:32.698423Z	  877 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T18:56:32.705135Z	  877 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T18:56:32.710080Z	  877 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T18:56:32.716484Z	  878 Quit	
+2023-02-12T18:56:32.716815Z	  877 Quit	
+2023-02-12T18:56:32.842998Z	  879 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:56:32.844658Z	  879 Query	SELECT @@version, @@version_comment
+2023-02-12T18:56:32.846030Z	  879 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T18:56:32.847357Z	  879 Query	SET lc_messages = 'en_US'
+2023-02-12T18:56:32.850385Z	  880 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T18:56:32.852828Z	  880 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:56:32.855521Z	  879 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T18:56:32.857936Z	  880 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T18:56:32.860548Z	  879 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T18:56:32.862823Z	  879 Query	SELECT CURRENT_USER()
+2023-02-12T18:56:32.864934Z	  879 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T18:56:32.869312Z	  880 Quit	
+2023-02-12T18:56:32.869478Z	  879 Quit	
+2023-02-12T19:10:42.596077Z	  881 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T19:10:42.598310Z	  881 Query	SELECT @@version, @@version_comment
+2023-02-12T19:10:42.599751Z	  881 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T19:10:42.600752Z	  881 Query	SET lc_messages = 'en_US'
+2023-02-12T19:10:42.603132Z	  882 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T19:10:42.604364Z	  882 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T19:10:42.605662Z	  882 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T19:10:42.608465Z	  881 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T19:10:42.609429Z	  882 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T19:10:42.610693Z	  882 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T19:10:42.613534Z	  881 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T19:10:42.615630Z	  881 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T19:10:42.616778Z	  881 Query	SELECT CURRENT_USER()
+2023-02-12T19:10:42.617776Z	  881 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T19:10:42.619531Z	  881 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='EVENT'
+2023-02-12T19:10:42.620879Z	  881 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T19:10:42.622786Z	  882 Quit	
+2023-02-12T19:10:42.622913Z	  881 Quit	
+2023-02-12T19:11:49.774188Z	  883 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T19:11:49.775640Z	  883 Query	SELECT @@version, @@version_comment
+2023-02-12T19:11:49.777222Z	  883 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T19:11:49.778501Z	  883 Query	SET lc_messages = 'en_US'
+2023-02-12T19:11:49.780744Z	  884 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T19:11:49.782072Z	  884 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T19:11:49.783399Z	  884 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T19:11:49.786128Z	  883 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T19:11:49.787277Z	  884 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T19:11:49.788448Z	  884 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T19:11:49.791401Z	  883 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T19:11:49.793922Z	  883 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T19:11:49.795150Z	  883 Query	SELECT CURRENT_USER()
+2023-02-12T19:11:49.796568Z	  883 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T19:11:49.798589Z	  883 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='EVENT'
+2023-02-12T19:11:49.800047Z	  883 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T19:11:49.802312Z	  883 Quit	
+2023-02-12T19:11:49.802710Z	  884 Quit	
+2023-02-12T19:20:27.910033Z	  885 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T19:20:27.912178Z	  885 Query	SELECT @@version, @@version_comment
+2023-02-12T19:20:27.913506Z	  885 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T19:20:27.914555Z	  885 Query	SET lc_messages = 'en_US'
+2023-02-12T19:20:27.917067Z	  886 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T19:20:27.918415Z	  886 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T19:20:27.919691Z	  886 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T19:20:27.923377Z	  885 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T19:20:27.924582Z	  886 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T19:20:27.925967Z	  886 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T19:20:27.928792Z	  885 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T19:20:27.931205Z	  885 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T19:20:27.932424Z	  885 Query	SELECT CURRENT_USER()
+2023-02-12T19:20:27.933656Z	  885 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T19:20:27.935491Z	  885 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='EVENT'
+2023-02-12T19:20:27.936755Z	  885 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T19:20:27.938829Z	  886 Quit	
+2023-02-12T19:20:27.939010Z	  885 Quit	
+2023-02-12T19:29:45.572623Z	  887 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T19:29:45.574798Z	  887 Query	SELECT @@version, @@version_comment
+2023-02-12T19:29:45.576623Z	  887 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T19:29:45.577966Z	  887 Query	SET lc_messages = 'en_US'
+2023-02-12T19:29:45.580897Z	  888 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T19:29:45.582663Z	  888 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T19:29:45.584340Z	  888 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T19:29:45.588876Z	  887 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T19:29:45.590555Z	  888 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T19:29:45.592459Z	  888 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T19:29:45.595612Z	  887 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T19:29:45.598173Z	  887 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T19:29:45.599395Z	  887 Query	SELECT CURRENT_USER()
+2023-02-12T19:29:45.600795Z	  887 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T19:29:45.602814Z	  887 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='EVENT'
+2023-02-12T19:29:45.604391Z	  887 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T19:29:45.606919Z	  888 Quit	
+2023-02-12T19:29:45.607106Z	  887 Quit	
+2023-02-12T20:39:31.615412Z	  889 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:39:31.623397Z	  889 Query	SELECT @@version, @@version_comment
+2023-02-12T20:39:31.625621Z	  889 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T20:39:31.627789Z	  889 Query	SET lc_messages = 'en_US'
+2023-02-12T20:39:31.631979Z	  890 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:39:31.634362Z	  889 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T20:39:31.638001Z	  889 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T20:39:31.639589Z	  889 Query	SELECT CURRENT_USER()
+2023-02-12T20:39:31.642499Z	  889 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T20:39:31.650039Z	  889 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='EVENT'
+2023-02-12T20:39:31.651929Z	  889 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T20:39:31.654828Z	  890 Quit	
+2023-02-12T20:39:31.655140Z	  889 Quit	
+2023-02-12T20:39:31.685277Z	  891 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:39:31.687344Z	  891 Query	SELECT @@version, @@version_comment
+2023-02-12T20:39:31.688974Z	  891 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T20:39:31.690048Z	  891 Query	SET lc_messages = 'en_US'
+2023-02-12T20:39:31.692946Z	  892 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:39:31.694582Z	  892 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:39:31.696868Z	  891 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T20:39:31.698426Z	  892 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:39:31.700962Z	  891 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T20:39:31.702704Z	  891 Query	SELECT CURRENT_USER()
+2023-02-12T20:39:31.704275Z	  891 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T20:39:31.706804Z	  891 Query	SHOW MASTER LOGS
+2023-02-12T20:39:31.781411Z	  892 Quit	
+2023-02-12T20:39:31.781493Z	  891 Quit	
+2023-02-12T20:39:33.370547Z	  893 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:39:33.373219Z	  893 Query	SELECT @@version, @@version_comment
+2023-02-12T20:39:33.375087Z	  893 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T20:39:33.377019Z	  893 Query	SET lc_messages = 'en_US'
+2023-02-12T20:39:33.380421Z	  894 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:39:33.382067Z	  894 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:39:33.383721Z	  894 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T20:39:33.388008Z	  893 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T20:39:33.390319Z	  894 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:39:33.392679Z	  894 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T20:39:33.397230Z	  893 Init DB	oscar_code_challenge
+2023-02-12T20:39:33.399701Z	  893 Query	SELECT @@lower_case_table_names
+2023-02-12T20:39:33.401473Z	  893 Query	SELECT *, `TABLE_SCHEMA`       AS `Db`, `TABLE_NAME`         AS `Name`, `TABLE_TYPE`         AS `TABLE_TYPE`, `ENGINE`             AS `Engine`, `ENGINE`             AS `Type`, `VERSION`            AS `Version`, `ROW_FORMAT`         AS `Row_format`, `TABLE_ROWS`         AS `Rows`, `AVG_ROW_LENGTH`     AS `Avg_row_length`, `DATA_LENGTH`        AS `Data_length`, `MAX_DATA_LENGTH`    AS `Max_data_length`, `INDEX_LENGTH`       AS `Index_length`, `DATA_FREE`          AS `Data_free`, `AUTO_INCREMENT`     AS `Auto_increment`, `CREATE_TIME`        AS `Create_time`, `UPDATE_TIME`        AS `Update_time`, `CHECK_TIME`         AS `Check_time`, `TABLE_COLLATION`    AS `Collation`, `CHECKSUM`           AS `Checksum`, `CREATE_OPTIONS`     AS `Create_options`, `TABLE_COMMENT`      AS `Comment` FROM `information_schema`.`TABLES` t WHERE `TABLE_SCHEMA` COLLATE utf8_general_ci IN ('oscar_code_challenge') AND t.`TABLE_NAME` COLLATE utf8_general_ci = 'car' ORDER BY Name ASC
+2023-02-12T20:39:33.404747Z	  893 Query	SELECT *, `TABLE_SCHEMA`       AS `Db`, `TABLE_NAME`         AS `Name`, `TABLE_TYPE`         AS `TABLE_TYPE`, `ENGINE`             AS `Engine`, `ENGINE`             AS `Type`, `VERSION`            AS `Version`, `ROW_FORMAT`         AS `Row_format`, `TABLE_ROWS`         AS `Rows`, `AVG_ROW_LENGTH`     AS `Avg_row_length`, `DATA_LENGTH`        AS `Data_length`, `MAX_DATA_LENGTH`    AS `Max_data_length`, `INDEX_LENGTH`       AS `Index_length`, `DATA_FREE`          AS `Data_free`, `AUTO_INCREMENT`     AS `Auto_increment`, `CREATE_TIME`        AS `Create_time`, `UPDATE_TIME`        AS `Update_time`, `CHECK_TIME`         AS `Check_time`, `TABLE_COLLATION`    AS `Collation`, `CHECKSUM`           AS `Checksum`, `CREATE_OPTIONS`     AS `Create_options`, `TABLE_COMMENT`      AS `Comment` FROM `information_schema`.`TABLES` t WHERE `TABLE_SCHEMA` COLLATE utf8_general_ci IN ('oscar_code_challenge') AND t.`TABLE_NAME` COLLATE utf8_general_ci = 'car' ORDER BY Name ASC
+2023-02-12T20:39:33.411274Z	  893 Query	SELECT CURRENT_USER()
+2023-02-12T20:39:33.412972Z	  893 Query	SHOW GRANTS
+2023-02-12T20:39:33.414480Z	  893 Init DB	oscar_code_challenge
+2023-02-12T20:39:33.415880Z	  893 Query	SHOW INDEXES FROM `oscar_code_challenge`.`car`
+2023-02-12T20:39:33.418821Z	  893 Query	SHOW FULL COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T20:39:33.422863Z	  893 Query	SHOW FULL COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T20:39:33.430123Z	  893 Query	SHOW STORAGE ENGINES
+2023-02-12T20:39:33.431676Z	  893 Query	SELECT @@disabled_storage_engines
+2023-02-12T20:39:33.433049Z	  893 Query	SHOW GLOBAL VARIABLES LIKE 'innodb_file_per_table'
+2023-02-12T20:39:33.436933Z	  893 Query	SELECT `COLLATION_NAME` AS `Collation`, `CHARACTER_SET_NAME` AS `Charset`, `ID` AS `Id`, `IS_DEFAULT` AS `Default`, `IS_COMPILED` AS `Compiled`, `SORTLEN` AS `Sortlen` FROM `information_schema`.`COLLATIONS`
+2023-02-12T20:39:33.444185Z	  893 Query	SELECT * FROM `information_schema`.`PARTITIONS` WHERE `TABLE_SCHEMA` = 'oscar_code_challenge' AND `TABLE_NAME` = 'car'
+2023-02-12T20:39:33.451082Z	  893 Query	SELECT DISTINCT `PARTITION_NAME` FROM `information_schema`.`PARTITIONS` WHERE `TABLE_SCHEMA` = 'oscar_code_challenge' AND `TABLE_NAME` = 'car'
+2023-02-12T20:39:33.458267Z	  893 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T20:39:33.462266Z	  893 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T20:39:33.463978Z	  893 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T20:39:33.466184Z	  893 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T20:39:33.471374Z	  894 Quit	
+2023-02-12T20:39:33.471807Z	  893 Quit	
+2023-02-12T20:39:33.594332Z	  895 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:39:33.596695Z	  895 Query	SELECT @@version, @@version_comment
+2023-02-12T20:39:33.598811Z	  895 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T20:39:33.600301Z	  895 Query	SET lc_messages = 'en_US'
+2023-02-12T20:39:33.604925Z	  896 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:39:33.606996Z	  896 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:39:33.608960Z	  895 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T20:39:33.610401Z	  896 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:39:33.612809Z	  895 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T20:39:33.615123Z	  895 Query	SELECT CURRENT_USER()
+2023-02-12T20:39:33.618347Z	  895 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T20:39:33.621343Z	  896 Quit	
+2023-02-12T20:39:33.621454Z	  895 Quit	
+2023-02-12T20:39:42.396154Z	  897 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:39:42.397931Z	  897 Query	SELECT @@version, @@version_comment
+2023-02-12T20:39:42.399725Z	  897 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T20:39:42.401101Z	  897 Query	SET lc_messages = 'en_US'
+2023-02-12T20:39:42.404360Z	  898 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:39:42.405959Z	  898 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:39:42.407820Z	  897 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T20:39:42.409270Z	  898 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:39:42.411345Z	  897 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T20:39:42.412827Z	  897 Query	SELECT CURRENT_USER()
+2023-02-12T20:39:42.414066Z	  897 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T20:39:42.416658Z	  898 Quit	
+2023-02-12T20:39:42.416726Z	  897 Quit	
+2023-02-12T20:41:09.892288Z	  899 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:41:09.896408Z	  899 Query	SELECT @@version, @@version_comment
+2023-02-12T20:41:09.898437Z	  899 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T20:41:09.900324Z	  899 Query	SET lc_messages = 'en_US'
+2023-02-12T20:41:09.904845Z	  900 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:41:09.909792Z	  900 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:41:09.912994Z	  900 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T20:41:09.916989Z	  899 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T20:41:09.918176Z	  900 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:41:09.919902Z	  900 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T20:41:09.925033Z	  899 Query	SELECT CURRENT_USER()
+2023-02-12T20:41:09.930208Z	  899 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T20:41:09.931804Z	  899 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T20:41:09.937862Z	  899 Query	SELECT DATABASE()
+2023-02-12T20:41:09.940710Z	  899 Init DB	oscar_code_challenge
+2023-02-12T20:41:09.942701Z	  899 Query	SELECT * FROM `car` LIMIT 0, 25
+2023-02-12T20:41:09.945136Z	  899 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T20:41:09.947232Z	  899 Query	SELECT @@lower_case_table_names
+2023-02-12T20:41:09.948864Z	  899 Query	SELECT *, `TABLE_SCHEMA`       AS `Db`, `TABLE_NAME`         AS `Name`, `TABLE_TYPE`         AS `TABLE_TYPE`, `ENGINE`             AS `Engine`, `ENGINE`             AS `Type`, `VERSION`            AS `Version`, `ROW_FORMAT`         AS `Row_format`, `TABLE_ROWS`         AS `Rows`, `AVG_ROW_LENGTH`     AS `Avg_row_length`, `DATA_LENGTH`        AS `Data_length`, `MAX_DATA_LENGTH`    AS `Max_data_length`, `INDEX_LENGTH`       AS `Index_length`, `DATA_FREE`          AS `Data_free`, `AUTO_INCREMENT`     AS `Auto_increment`, `CREATE_TIME`        AS `Create_time`, `UPDATE_TIME`        AS `Update_time`, `CHECK_TIME`         AS `Check_time`, `TABLE_COLLATION`    AS `Collation`, `CHECKSUM`           AS `Checksum`, `CREATE_OPTIONS`     AS `Create_options`, `TABLE_COMMENT`      AS `Comment` FROM `information_schema`.`TABLES` t WHERE `TABLE_SCHEMA` COLLATE utf8_general_ci IN ('oscar_code_challenge') AND t.`TABLE_NAME` COLLATE utf8_general_ci = 'car' ORDER BY Name ASC
+2023-02-12T20:41:09.951640Z	  899 Query	SELECT COUNT(*) FROM `oscar_code_challenge`.`car`
+2023-02-12T20:41:09.955831Z	  899 Query	SHOW WARNINGS
+2023-02-12T20:41:09.957834Z	  899 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car' AND IS_UPDATABLE = 'YES'
+2023-02-12T20:41:09.960170Z	  899 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T20:41:09.963215Z	  899 Query	SHOW INDEXES FROM `oscar_code_challenge`.`car`
+2023-02-12T20:41:09.966152Z	  899 Query	SELECT @@have_profiling
+2023-02-12T20:41:09.967993Z	  899 Query	SHOW CREATE TABLE `oscar_code_challenge`.`car`
+2023-02-12T20:41:09.975944Z	  899 Query	SHOW FULL COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T20:41:10.008745Z	  899 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T20:41:10.012685Z	  899 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T20:41:10.017202Z	  899 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T20:41:10.019644Z	  899 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T20:41:10.031946Z	  900 Quit	
+2023-02-12T20:41:10.032066Z	  899 Quit	
+2023-02-12T20:41:10.130066Z	  901 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:41:10.136035Z	  901 Query	SELECT @@version, @@version_comment
+2023-02-12T20:41:10.140714Z	  901 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T20:41:10.143937Z	  901 Query	SET lc_messages = 'en_US'
+2023-02-12T20:41:10.149067Z	  902 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:41:10.151332Z	  902 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:41:10.154216Z	  901 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T20:41:10.158132Z	  902 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:41:10.163437Z	  901 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T20:41:10.165989Z	  901 Query	SELECT CURRENT_USER()
+2023-02-12T20:41:10.169820Z	  901 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T20:41:10.176069Z	  902 Quit	
+2023-02-12T20:41:10.176389Z	  901 Quit	
+2023-02-12T20:57:01.955856Z	  903 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T20:57:01.962456Z	  903 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T20:57:01.964931Z	  903 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T20:57:01.972101Z	  903 Close stmt	
+2023-02-12T20:57:02.059342Z	  903 Quit	
+2023-02-12T20:57:21.917835Z	  904 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:57:21.919838Z	  904 Query	SELECT @@version, @@version_comment
+2023-02-12T20:57:21.922300Z	  904 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T20:57:21.924387Z	  904 Query	SET lc_messages = 'en_US'
+2023-02-12T20:57:21.929794Z	  905 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:57:21.932681Z	  905 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:57:21.934543Z	  905 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T20:57:21.938632Z	  904 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T20:57:21.941274Z	  905 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:57:21.943952Z	  905 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T20:57:21.949376Z	  904 Query	SELECT CURRENT_USER()
+2023-02-12T20:57:21.956790Z	  904 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T20:57:21.958800Z	  904 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T20:57:21.963582Z	  904 Query	SELECT DATABASE()
+2023-02-12T20:57:21.965231Z	  904 Init DB	oscar_code_challenge
+2023-02-12T20:57:21.967189Z	  904 Query	SELECT * FROM `car` LIMIT 0, 25
+2023-02-12T20:57:21.969000Z	  904 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T20:57:21.971301Z	  904 Query	SELECT @@lower_case_table_names
+2023-02-12T20:57:21.972748Z	  904 Query	SELECT *, `TABLE_SCHEMA`       AS `Db`, `TABLE_NAME`         AS `Name`, `TABLE_TYPE`         AS `TABLE_TYPE`, `ENGINE`             AS `Engine`, `ENGINE`             AS `Type`, `VERSION`            AS `Version`, `ROW_FORMAT`         AS `Row_format`, `TABLE_ROWS`         AS `Rows`, `AVG_ROW_LENGTH`     AS `Avg_row_length`, `DATA_LENGTH`        AS `Data_length`, `MAX_DATA_LENGTH`    AS `Max_data_length`, `INDEX_LENGTH`       AS `Index_length`, `DATA_FREE`          AS `Data_free`, `AUTO_INCREMENT`     AS `Auto_increment`, `CREATE_TIME`        AS `Create_time`, `UPDATE_TIME`        AS `Update_time`, `CHECK_TIME`         AS `Check_time`, `TABLE_COLLATION`    AS `Collation`, `CHECKSUM`           AS `Checksum`, `CREATE_OPTIONS`     AS `Create_options`, `TABLE_COMMENT`      AS `Comment` FROM `information_schema`.`TABLES` t WHERE `TABLE_SCHEMA` COLLATE utf8_general_ci IN ('oscar_code_challenge') AND t.`TABLE_NAME` COLLATE utf8_general_ci = 'car' ORDER BY Name ASC
+2023-02-12T20:57:21.975456Z	  904 Query	SELECT COUNT(*) FROM `oscar_code_challenge`.`car`
+2023-02-12T20:57:21.978494Z	  904 Query	SHOW WARNINGS
+2023-02-12T20:57:21.980396Z	  904 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car' AND IS_UPDATABLE = 'YES'
+2023-02-12T20:57:21.982837Z	  904 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T20:57:21.986522Z	  904 Query	SHOW INDEXES FROM `oscar_code_challenge`.`car`
+2023-02-12T20:57:21.989818Z	  904 Query	SHOW CREATE TABLE `oscar_code_challenge`.`car`
+2023-02-12T20:57:21.995517Z	  904 Query	SHOW FULL COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T20:57:22.024076Z	  904 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T20:57:22.029657Z	  904 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T20:57:22.035161Z	  904 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T20:57:22.037402Z	  904 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T20:57:22.043750Z	  905 Quit	
+2023-02-12T20:57:22.043992Z	  904 Quit	
+2023-02-12T20:57:22.153344Z	  906 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:57:22.155197Z	  906 Query	SELECT @@version, @@version_comment
+2023-02-12T20:57:22.156765Z	  906 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T20:57:22.158023Z	  906 Query	SET lc_messages = 'en_US'
+2023-02-12T20:57:22.161452Z	  907 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:57:22.163181Z	  907 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:57:22.165231Z	  906 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T20:57:22.166785Z	  907 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:57:22.169264Z	  906 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T20:57:22.171458Z	  906 Query	SELECT CURRENT_USER()
+2023-02-12T20:57:22.173201Z	  906 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T20:57:22.176326Z	  907 Quit	
+2023-02-12T20:57:22.176424Z	  906 Quit	
+2023-02-12T20:57:25.723562Z	  908 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:57:25.727349Z	  908 Query	SELECT @@version, @@version_comment
+2023-02-12T20:57:25.728946Z	  908 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T20:57:25.730556Z	  908 Query	SET lc_messages = 'en_US'
+2023-02-12T20:57:25.734791Z	  909 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:57:25.737236Z	  909 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:57:25.739517Z	  909 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T20:57:25.745373Z	  908 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T20:57:25.749576Z	  909 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:57:25.755286Z	  909 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T20:57:25.760762Z	  908 Query	SELECT CURRENT_USER()
+2023-02-12T20:57:25.771269Z	  908 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T20:57:25.773223Z	  908 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T20:57:25.777195Z	  908 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T20:57:25.780140Z	  908 Query	SELECT DATABASE()
+2023-02-12T20:57:25.781927Z	  908 Init DB	oscar_code_challenge
+2023-02-12T20:57:25.783603Z	  908 Query	SELECT * FROM `car`  
+ORDER BY `car`.`id` ASC LIMIT 0, 25
+2023-02-12T20:57:25.785827Z	  908 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T20:57:25.788668Z	  908 Query	SELECT @@lower_case_table_names
+2023-02-12T20:57:25.790871Z	  908 Query	SELECT *, `TABLE_SCHEMA`       AS `Db`, `TABLE_NAME`         AS `Name`, `TABLE_TYPE`         AS `TABLE_TYPE`, `ENGINE`             AS `Engine`, `ENGINE`             AS `Type`, `VERSION`            AS `Version`, `ROW_FORMAT`         AS `Row_format`, `TABLE_ROWS`         AS `Rows`, `AVG_ROW_LENGTH`     AS `Avg_row_length`, `DATA_LENGTH`        AS `Data_length`, `MAX_DATA_LENGTH`    AS `Max_data_length`, `INDEX_LENGTH`       AS `Index_length`, `DATA_FREE`          AS `Data_free`, `AUTO_INCREMENT`     AS `Auto_increment`, `CREATE_TIME`        AS `Create_time`, `UPDATE_TIME`        AS `Update_time`, `CHECK_TIME`         AS `Check_time`, `TABLE_COLLATION`    AS `Collation`, `CHECKSUM`           AS `Checksum`, `CREATE_OPTIONS`     AS `Create_options`, `TABLE_COMMENT`      AS `Comment` FROM `information_schema`.`TABLES` t WHERE `TABLE_SCHEMA` COLLATE utf8_general_ci IN ('oscar_code_challenge') AND t.`TABLE_NAME` COLLATE utf8_general_ci = 'car' ORDER BY Name ASC
+2023-02-12T20:57:25.794348Z	  908 Query	SELECT COUNT(*) FROM `oscar_code_challenge`.`car`
+2023-02-12T20:57:25.796754Z	  908 Query	SHOW WARNINGS
+2023-02-12T20:57:25.798746Z	  908 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car' AND IS_UPDATABLE = 'YES'
+2023-02-12T20:57:25.801788Z	  908 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T20:57:25.805215Z	  908 Query	SHOW INDEXES FROM `oscar_code_challenge`.`car`
+2023-02-12T20:57:25.808805Z	  908 Query	SHOW CREATE TABLE `oscar_code_challenge`.`car`
+2023-02-12T20:57:25.813588Z	  908 Query	SHOW FULL COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T20:57:25.845604Z	  908 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T20:57:25.849288Z	  908 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T20:57:25.855515Z	  908 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T20:57:25.857609Z	  908 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T20:57:25.863331Z	  909 Quit	
+2023-02-12T20:57:25.863473Z	  908 Quit	
+2023-02-12T20:57:25.963589Z	  910 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:57:25.965289Z	  910 Query	SELECT @@version, @@version_comment
+2023-02-12T20:57:25.966607Z	  910 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T20:57:25.967739Z	  910 Query	SET lc_messages = 'en_US'
+2023-02-12T20:57:25.970502Z	  911 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:57:25.971908Z	  911 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:57:25.973769Z	  910 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T20:57:25.974909Z	  911 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:57:25.977160Z	  910 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T20:57:25.978476Z	  910 Query	SELECT CURRENT_USER()
+2023-02-12T20:57:25.979631Z	  910 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T20:57:25.982709Z	  911 Quit	
+2023-02-12T20:57:25.983188Z	  910 Quit	
+2023-02-12T20:57:27.594576Z	  912 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:57:27.596563Z	  912 Query	SELECT @@version, @@version_comment
+2023-02-12T20:57:27.598446Z	  912 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T20:57:27.600619Z	  912 Query	SET lc_messages = 'en_US'
+2023-02-12T20:57:27.604875Z	  913 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:57:27.609673Z	  913 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:57:27.623612Z	  913 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T20:57:27.641571Z	  912 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T20:57:27.645985Z	  913 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:57:27.650459Z	  913 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T20:57:27.657560Z	  912 Query	SELECT CURRENT_USER()
+2023-02-12T20:57:27.665664Z	  912 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T20:57:27.669351Z	  912 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T20:57:27.674724Z	  912 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T20:57:27.677791Z	  912 Query	SELECT DATABASE()
+2023-02-12T20:57:27.679938Z	  912 Init DB	oscar_code_challenge
+2023-02-12T20:57:27.681467Z	  912 Query	SELECT * FROM `car`  
+ORDER BY `car`.`id` DESC LIMIT 0, 25
+2023-02-12T20:57:27.683683Z	  912 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T20:57:27.686910Z	  912 Query	SELECT @@lower_case_table_names
+2023-02-12T20:57:27.690721Z	  912 Query	SELECT *, `TABLE_SCHEMA`       AS `Db`, `TABLE_NAME`         AS `Name`, `TABLE_TYPE`         AS `TABLE_TYPE`, `ENGINE`             AS `Engine`, `ENGINE`             AS `Type`, `VERSION`            AS `Version`, `ROW_FORMAT`         AS `Row_format`, `TABLE_ROWS`         AS `Rows`, `AVG_ROW_LENGTH`     AS `Avg_row_length`, `DATA_LENGTH`        AS `Data_length`, `MAX_DATA_LENGTH`    AS `Max_data_length`, `INDEX_LENGTH`       AS `Index_length`, `DATA_FREE`          AS `Data_free`, `AUTO_INCREMENT`     AS `Auto_increment`, `CREATE_TIME`        AS `Create_time`, `UPDATE_TIME`        AS `Update_time`, `CHECK_TIME`         AS `Check_time`, `TABLE_COLLATION`    AS `Collation`, `CHECKSUM`           AS `Checksum`, `CREATE_OPTIONS`     AS `Create_options`, `TABLE_COMMENT`      AS `Comment` FROM `information_schema`.`TABLES` t WHERE `TABLE_SCHEMA` COLLATE utf8_general_ci IN ('oscar_code_challenge') AND t.`TABLE_NAME` COLLATE utf8_general_ci = 'car' ORDER BY Name ASC
+2023-02-12T20:57:27.701320Z	  912 Query	SELECT COUNT(*) FROM `oscar_code_challenge`.`car`
+2023-02-12T20:57:27.708303Z	  912 Query	SHOW WARNINGS
+2023-02-12T20:57:27.712339Z	  912 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car' AND IS_UPDATABLE = 'YES'
+2023-02-12T20:57:27.718251Z	  912 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T20:57:27.725608Z	  912 Query	SHOW INDEXES FROM `oscar_code_challenge`.`car`
+2023-02-12T20:57:27.732125Z	  912 Query	SHOW CREATE TABLE `oscar_code_challenge`.`car`
+2023-02-12T20:57:27.737966Z	  912 Query	SHOW FULL COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T20:57:27.772511Z	  912 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T20:57:27.775522Z	  912 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T20:57:27.778817Z	  912 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T20:57:27.780764Z	  912 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T20:57:27.788552Z	  913 Quit	
+2023-02-12T20:57:27.788658Z	  912 Quit	
+2023-02-12T20:57:27.883466Z	  914 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:57:27.885214Z	  914 Query	SELECT @@version, @@version_comment
+2023-02-12T20:57:27.886839Z	  914 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T20:57:27.888594Z	  914 Query	SET lc_messages = 'en_US'
+2023-02-12T20:57:27.893601Z	  915 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T20:57:27.895895Z	  915 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:57:27.898191Z	  914 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T20:57:27.899894Z	  915 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T20:57:27.903411Z	  914 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T20:57:27.905152Z	  914 Query	SELECT CURRENT_USER()
+2023-02-12T20:57:27.906433Z	  914 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T20:57:27.910214Z	  915 Quit	
+2023-02-12T20:57:27.910710Z	  914 Quit	
+2023-02-12T20:58:37.991553Z	  916 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T20:58:38.014389Z	  916 Prepare	SELECT * FROM car
+                WHERE year = ?
+                and brand = ?
+                and model = ?
+                and location <=> ?
+                and door_no <=> ?
+                and seat_no <=> ?
+                and transmission <=> ?
+                and fuel_type <=> ?
+                and license <=> ?
+                and car_type_group <=> ?
+                and car_type <=> ?
+                and car_km <=> ?
+                and width <=> ?
+                and height <=> ?
+                and length <=> ?
+2023-02-12T20:58:38.016809Z	  916 Execute	SELECT * FROM car
+                WHERE year = 'sdfsdfdsf'
+                and brand = 'BMW'
+                and model = 'abc'
+                and location <=> NULL
+                and door_no <=> '1ss'
+                and seat_no <=> 'sdfdf'
+                and transmission <=> NULL
+                and fuel_type <=> NULL
+                and license <=> NULL
+                and car_type_group <=> NULL
+                and car_type <=> NULL
+                and car_km <=> NULL
+                and width <=> NULL
+                and height <=> NULL
+                and length <=> NULL
+2023-02-12T20:58:38.021096Z	  916 Close stmt	
+2023-02-12T20:58:38.022125Z	  916 Quit	
+2023-02-12T20:58:42.843906Z	  917 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T20:58:42.850020Z	  917 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T20:58:42.852213Z	  917 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T20:58:42.858131Z	  917 Close stmt	
+2023-02-12T20:58:42.894724Z	  917 Quit	
+2023-02-12T21:03:27.011615Z	  918 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T21:03:27.014222Z	  918 Query	SELECT @@version, @@version_comment
+2023-02-12T21:03:27.015505Z	  918 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T21:03:27.017169Z	  918 Query	SET lc_messages = 'en_US'
+2023-02-12T21:03:27.020376Z	  919 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T21:03:27.022183Z	  919 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T21:03:27.023965Z	  919 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T21:03:27.029432Z	  918 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T21:03:27.031189Z	  919 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T21:03:27.033042Z	  919 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T21:03:27.039265Z	  918 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T21:03:27.042674Z	  918 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T21:03:27.044294Z	  918 Query	SELECT CURRENT_USER()
+2023-02-12T21:03:27.047696Z	  918 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T21:03:27.051960Z	  918 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='EVENT'
+2023-02-12T21:03:27.054903Z	  918 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T21:03:27.057666Z	  919 Quit	
+2023-02-12T21:03:27.057686Z	  918 Quit	
+2023-02-12T21:04:57.875953Z	  920 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:04:57.880457Z	  920 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:04:57.882968Z	  920 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:04:57.889559Z	  920 Close stmt	
+2023-02-12T21:04:57.949005Z	  920 Quit	
+2023-02-12T21:05:54.337723Z	  921 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:05:54.342728Z	  921 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:05:54.344706Z	  921 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:05:54.352698Z	  921 Close stmt	
+2023-02-12T21:05:54.424462Z	  921 Quit	
+2023-02-12T21:06:18.514194Z	  922 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:06:18.519495Z	  922 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:06:18.522000Z	  922 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:06:18.528500Z	  922 Close stmt	
+2023-02-12T21:06:18.529532Z	  922 Prepare	SELECT id FROM car order by id desc limit 0,1
+2023-02-12T21:06:18.532780Z	  922 Execute	SELECT id FROM car order by id desc limit 0,1
+2023-02-12T21:06:18.536189Z	  922 Close stmt	
+2023-02-12T21:06:18.574039Z	  922 Quit	
+2023-02-12T21:10:14.337672Z	  923 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:10:14.341513Z	  923 Prepare	SELECT id FROM car order by id desc limit 0,1
+2023-02-12T21:10:14.343199Z	  923 Execute	SELECT id FROM car order by id desc limit 0,1
+2023-02-12T21:10:14.346496Z	  923 Close stmt	
+2023-02-12T21:10:14.348767Z	  923 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:10:14.350608Z	  923 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:10:14.355631Z	  923 Close stmt	
+2023-02-12T21:10:14.389657Z	  923 Quit	
+2023-02-12T21:10:54.711867Z	  924 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T21:10:54.714346Z	  924 Query	SELECT @@version, @@version_comment
+2023-02-12T21:10:54.717013Z	  924 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T21:10:54.720582Z	  924 Query	SET lc_messages = 'en_US'
+2023-02-12T21:10:54.725210Z	  925 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T21:10:54.727290Z	  925 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T21:10:54.728780Z	  925 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T21:10:54.733272Z	  924 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T21:10:54.735426Z	  925 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T21:10:54.737758Z	  925 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T21:10:54.742824Z	  924 Query	SELECT CURRENT_USER()
+2023-02-12T21:10:54.755729Z	  924 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T21:10:54.758859Z	  924 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T21:10:54.765228Z	  924 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T21:10:54.770283Z	  924 Query	SELECT DATABASE()
+2023-02-12T21:10:54.772739Z	  924 Init DB	oscar_code_challenge
+2023-02-12T21:10:54.775579Z	  924 Query	SELECT * FROM `car`  
+ORDER BY `car`.`id` ASC LIMIT 0, 25
+2023-02-12T21:10:54.778586Z	  924 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T21:10:54.782874Z	  924 Query	SELECT @@lower_case_table_names
+2023-02-12T21:10:54.785385Z	  924 Query	SELECT *, `TABLE_SCHEMA`       AS `Db`, `TABLE_NAME`         AS `Name`, `TABLE_TYPE`         AS `TABLE_TYPE`, `ENGINE`             AS `Engine`, `ENGINE`             AS `Type`, `VERSION`            AS `Version`, `ROW_FORMAT`         AS `Row_format`, `TABLE_ROWS`         AS `Rows`, `AVG_ROW_LENGTH`     AS `Avg_row_length`, `DATA_LENGTH`        AS `Data_length`, `MAX_DATA_LENGTH`    AS `Max_data_length`, `INDEX_LENGTH`       AS `Index_length`, `DATA_FREE`          AS `Data_free`, `AUTO_INCREMENT`     AS `Auto_increment`, `CREATE_TIME`        AS `Create_time`, `UPDATE_TIME`        AS `Update_time`, `CHECK_TIME`         AS `Check_time`, `TABLE_COLLATION`    AS `Collation`, `CHECKSUM`           AS `Checksum`, `CREATE_OPTIONS`     AS `Create_options`, `TABLE_COMMENT`      AS `Comment` FROM `information_schema`.`TABLES` t WHERE `TABLE_SCHEMA` COLLATE utf8_general_ci IN ('oscar_code_challenge') AND t.`TABLE_NAME` COLLATE utf8_general_ci = 'car' ORDER BY Name ASC
+2023-02-12T21:10:54.790046Z	  924 Query	SELECT COUNT(*) FROM `oscar_code_challenge`.`car`
+2023-02-12T21:10:54.794982Z	  924 Query	SHOW WARNINGS
+2023-02-12T21:10:54.796784Z	  924 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car' AND IS_UPDATABLE = 'YES'
+2023-02-12T21:10:54.799057Z	  924 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T21:10:54.802902Z	  924 Query	SHOW INDEXES FROM `oscar_code_challenge`.`car`
+2023-02-12T21:10:54.806698Z	  924 Query	SHOW CREATE TABLE `oscar_code_challenge`.`car`
+2023-02-12T21:10:54.810976Z	  924 Query	SHOW FULL COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T21:10:54.845319Z	  924 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T21:10:54.849919Z	  924 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T21:10:54.855233Z	  924 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T21:10:54.857928Z	  924 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T21:10:54.866265Z	  925 Quit	
+2023-02-12T21:10:54.866879Z	  924 Quit	
+2023-02-12T21:10:54.984043Z	  926 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T21:10:54.986250Z	  926 Query	SELECT @@version, @@version_comment
+2023-02-12T21:10:54.988507Z	  926 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T21:10:54.990163Z	  926 Query	SET lc_messages = 'en_US'
+2023-02-12T21:10:54.993589Z	  927 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T21:10:54.995262Z	  927 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T21:10:54.997500Z	  926 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T21:10:54.999392Z	  927 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T21:10:55.001610Z	  926 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T21:10:55.003246Z	  926 Query	SELECT CURRENT_USER()
+2023-02-12T21:10:55.004741Z	  926 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T21:10:55.007627Z	  927 Quit	
+2023-02-12T21:10:55.007783Z	  926 Quit	
+2023-02-12T21:10:55.910391Z	  928 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T21:10:55.912265Z	  928 Query	SELECT @@version, @@version_comment
+2023-02-12T21:10:55.914353Z	  928 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T21:10:55.916604Z	  928 Query	SET lc_messages = 'en_US'
+2023-02-12T21:10:55.920411Z	  929 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T21:10:55.922286Z	  929 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T21:10:55.924349Z	  929 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T21:10:55.928212Z	  928 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T21:10:55.930507Z	  929 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T21:10:55.932484Z	  929 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T21:10:55.936290Z	  928 Query	SELECT CURRENT_USER()
+2023-02-12T21:10:55.943739Z	  928 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T21:10:55.945480Z	  928 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T21:10:55.949389Z	  928 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T21:10:55.953004Z	  928 Query	SELECT DATABASE()
+2023-02-12T21:10:55.955295Z	  928 Init DB	oscar_code_challenge
+2023-02-12T21:10:55.957383Z	  928 Query	SELECT * FROM `car`  
+ORDER BY `car`.`id` DESC LIMIT 0, 25
+2023-02-12T21:10:55.960220Z	  928 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car'
+2023-02-12T21:10:55.964992Z	  928 Query	SELECT @@lower_case_table_names
+2023-02-12T21:10:55.968456Z	  928 Query	SELECT *, `TABLE_SCHEMA`       AS `Db`, `TABLE_NAME`         AS `Name`, `TABLE_TYPE`         AS `TABLE_TYPE`, `ENGINE`             AS `Engine`, `ENGINE`             AS `Type`, `VERSION`            AS `Version`, `ROW_FORMAT`         AS `Row_format`, `TABLE_ROWS`         AS `Rows`, `AVG_ROW_LENGTH`     AS `Avg_row_length`, `DATA_LENGTH`        AS `Data_length`, `MAX_DATA_LENGTH`    AS `Max_data_length`, `INDEX_LENGTH`       AS `Index_length`, `DATA_FREE`          AS `Data_free`, `AUTO_INCREMENT`     AS `Auto_increment`, `CREATE_TIME`        AS `Create_time`, `UPDATE_TIME`        AS `Update_time`, `CHECK_TIME`         AS `Check_time`, `TABLE_COLLATION`    AS `Collation`, `CHECKSUM`           AS `Checksum`, `CREATE_OPTIONS`     AS `Create_options`, `TABLE_COMMENT`      AS `Comment` FROM `information_schema`.`TABLES` t WHERE `TABLE_SCHEMA` COLLATE utf8_general_ci IN ('oscar_code_challenge') AND t.`TABLE_NAME` COLLATE utf8_general_ci = 'car' ORDER BY Name ASC
+2023-02-12T21:10:55.972596Z	  928 Query	SELECT COUNT(*) FROM `oscar_code_challenge`.`car`
+2023-02-12T21:10:55.976332Z	  928 Query	SHOW WARNINGS
+2023-02-12T21:10:55.979722Z	  928 Query	SELECT TABLE_NAME FROM information_schema.VIEWS WHERE TABLE_SCHEMA = 'oscar_code_challenge' AND TABLE_NAME = 'car' AND IS_UPDATABLE = 'YES'
+2023-02-12T21:10:55.983431Z	  928 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T21:10:55.987184Z	  928 Query	SHOW INDEXES FROM `oscar_code_challenge`.`car`
+2023-02-12T21:10:55.992411Z	  928 Query	SHOW CREATE TABLE `oscar_code_challenge`.`car`
+2023-02-12T21:10:55.998429Z	  928 Query	SHOW FULL COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T21:10:56.048747Z	  928 Query	SHOW SESSION VARIABLES LIKE 'FOREIGN_KEY_CHECKS'
+2023-02-12T21:10:56.053348Z	  928 Query	SHOW  COLUMNS FROM `oscar_code_challenge`.`car`
+2023-02-12T21:10:56.059150Z	  928 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T21:10:56.061977Z	  928 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T21:10:56.074021Z	  928 Quit	
+2023-02-12T21:10:56.074786Z	  929 Quit	
+2023-02-12T21:10:56.173058Z	  930 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T21:10:56.174779Z	  930 Query	SELECT @@version, @@version_comment
+2023-02-12T21:10:56.176040Z	  930 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T21:10:56.177207Z	  930 Query	SET lc_messages = 'en_US'
+2023-02-12T21:10:56.179718Z	  931 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T21:10:56.181526Z	  931 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T21:10:56.183991Z	  930 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T21:10:56.185736Z	  931 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T21:10:56.187738Z	  930 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T21:10:56.189329Z	  930 Query	SELECT CURRENT_USER()
+2023-02-12T21:10:56.190522Z	  930 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T21:10:56.193016Z	  931 Quit	
+2023-02-12T21:10:56.193367Z	  930 Quit	
+2023-02-12T21:16:39.603259Z	  932 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:16:39.606695Z	  932 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:16:39.608636Z	  932 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:16:39.611917Z	  932 Close stmt	
+2023-02-12T21:16:39.614460Z	  932 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:16:39.616319Z	  932 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:16:39.622074Z	  932 Close stmt	
+2023-02-12T21:16:39.653710Z	  933 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:16:39.657105Z	  933 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:16:39.659506Z	  933 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:16:39.667405Z	  933 Close stmt	
+2023-02-12T21:16:39.668947Z	  933 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:16:39.671017Z	  933 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:16:39.674778Z	  933 Close stmt	
+2023-02-12T21:16:39.687867Z	  932 Quit	
+2023-02-12T21:16:39.688275Z	  933 Quit	
+2023-02-12T21:20:01.406034Z	  934 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:20:01.409600Z	  934 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:20:01.411201Z	  934 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:20:01.413841Z	  934 Close stmt	
+2023-02-12T21:20:01.415673Z	  934 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:20:01.417487Z	  934 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:20:01.422416Z	  934 Close stmt	
+2023-02-12T21:20:01.471726Z	  935 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:20:01.474503Z	  935 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:20:01.475999Z	  935 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:20:01.483615Z	  935 Close stmt	
+2023-02-12T21:20:01.485318Z	  935 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:20:01.487738Z	  935 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:20:01.491117Z	  935 Close stmt	
+2023-02-12T21:20:01.628811Z	  935 Quit	
+2023-02-12T21:20:01.628909Z	  934 Quit	
+2023-02-12T21:21:08.371801Z	  936 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:21:08.376953Z	  936 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:21:08.378802Z	  936 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:21:08.381699Z	  936 Close stmt	
+2023-02-12T21:21:08.383862Z	  936 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:21:08.385467Z	  936 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:21:08.391870Z	  936 Close stmt	
+2023-02-12T21:21:08.422075Z	  937 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:21:08.425433Z	  937 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:21:08.427688Z	  937 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:21:08.434204Z	  937 Close stmt	
+2023-02-12T21:21:08.435127Z	  937 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:21:08.437687Z	  937 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:21:08.441527Z	  937 Close stmt	
+2023-02-12T21:21:08.502699Z	  936 Quit	
+2023-02-12T21:21:08.502900Z	  937 Quit	
+2023-02-12T21:21:22.887915Z	  938 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T21:21:22.889487Z	  938 Query	SELECT @@version, @@version_comment
+2023-02-12T21:21:22.891282Z	  938 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T21:21:22.892337Z	  938 Query	SET lc_messages = 'en_US'
+2023-02-12T21:21:22.895121Z	  939 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T21:21:22.896506Z	  939 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T21:21:22.898099Z	  939 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T21:21:22.901296Z	  938 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T21:21:22.902814Z	  939 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T21:21:22.904512Z	  939 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T21:21:22.909135Z	  938 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T21:21:22.911941Z	  938 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T21:21:22.913340Z	  938 Query	SELECT CURRENT_USER()
+2023-02-12T21:21:22.914735Z	  938 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T21:21:22.916550Z	  938 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='EVENT'
+2023-02-12T21:21:22.917897Z	  938 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T21:21:22.919952Z	  939 Quit	
+2023-02-12T21:21:22.920349Z	  938 Quit	
+2023-02-12T21:22:01.204753Z	  940 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:22:01.208982Z	  940 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:22:01.211201Z	  940 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:22:01.214537Z	  940 Close stmt	
+2023-02-12T21:22:01.216303Z	  940 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:22:01.218235Z	  940 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:22:01.223659Z	  940 Close stmt	
+2023-02-12T21:22:01.255653Z	  941 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:22:01.261472Z	  941 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:22:01.263869Z	  941 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:22:01.271537Z	  941 Close stmt	
+2023-02-12T21:22:01.272839Z	  941 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:22:01.275919Z	  941 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:22:01.279677Z	  941 Close stmt	
+2023-02-12T21:22:01.338820Z	  940 Quit	
+2023-02-12T21:22:01.339159Z	  941 Quit	
+2023-02-12T21:22:37.334810Z	  942 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:22:37.339484Z	  942 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:22:37.342026Z	  942 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:22:37.348496Z	  942 Close stmt	
+2023-02-12T21:22:37.349602Z	  942 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:22:37.352023Z	  942 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:22:37.355280Z	  942 Close stmt	
+2023-02-12T21:22:37.438431Z	  942 Quit	
+2023-02-12T21:22:55.801250Z	  943 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:22:55.806003Z	  943 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:22:55.807798Z	  943 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:22:55.816218Z	  943 Close stmt	
+2023-02-12T21:22:55.817470Z	  943 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:22:55.820118Z	  943 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:22:55.823131Z	  943 Close stmt	
+2023-02-12T21:22:55.892076Z	  943 Quit	
+2023-02-12T21:24:09.167694Z	  944 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:24:09.173547Z	  944 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:24:09.175355Z	  944 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:24:09.181023Z	  944 Close stmt	
+2023-02-12T21:24:09.182165Z	  944 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:24:09.184290Z	  944 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:24:09.188384Z	  944 Close stmt	
+2023-02-12T21:24:09.272543Z	  944 Quit	
+2023-02-12T21:24:35.042372Z	  945 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:24:35.047353Z	  945 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:24:35.049013Z	  945 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:24:35.055078Z	  945 Close stmt	
+2023-02-12T21:24:35.056304Z	  945 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:24:35.058197Z	  945 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:24:35.060760Z	  945 Close stmt	
+2023-02-12T21:24:35.139335Z	  945 Quit	
+2023-02-12T21:25:20.852590Z	  946 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:25:20.857301Z	  946 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:25:20.859192Z	  946 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:25:20.864272Z	  946 Close stmt	
+2023-02-12T21:25:20.865264Z	  946 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:25:20.867948Z	  946 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:25:20.871390Z	  946 Close stmt	
+2023-02-12T21:25:20.949124Z	  946 Quit	
+2023-02-12T21:26:43.974206Z	  947 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:26:43.978349Z	  947 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:26:43.979966Z	  947 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:26:43.985232Z	  947 Close stmt	
+2023-02-12T21:26:43.986172Z	  947 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:26:43.988068Z	  947 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:26:43.992790Z	  947 Close stmt	
+2023-02-12T21:26:44.051303Z	  947 Quit	
+2023-02-12T21:26:58.638895Z	  948 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:26:58.644135Z	  948 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:26:58.646078Z	  948 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:26:58.652211Z	  948 Close stmt	
+2023-02-12T21:26:58.653232Z	  948 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:26:58.655102Z	  948 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:26:58.657656Z	  948 Close stmt	
+2023-02-12T21:26:58.689403Z	  948 Quit	
+2023-02-12T21:27:25.484100Z	  949 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:27:25.488780Z	  949 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:27:25.490451Z	  949 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:27:25.496297Z	  949 Close stmt	
+2023-02-12T21:27:25.497557Z	  949 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:27:25.499335Z	  949 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:27:25.502107Z	  949 Close stmt	
+2023-02-12T21:27:25.530147Z	  949 Quit	
+2023-02-12T21:27:39.278131Z	  950 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:27:39.283079Z	  950 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:27:39.284959Z	  950 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:27:39.291881Z	  950 Close stmt	
+2023-02-12T21:27:39.293106Z	  950 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:27:39.295241Z	  950 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:27:39.298060Z	  950 Close stmt	
+2023-02-12T21:27:39.374151Z	  950 Quit	
+2023-02-12T21:28:07.569422Z	  951 Connect	root@172.25.0.1 on oscar_code_challenge using TCP/IP
+2023-02-12T21:28:07.576199Z	  951 Prepare	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES (?, ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?, ?, ?, 
+                           ?, ?)
+2023-02-12T21:28:07.578256Z	  951 Execute	INSERT INTO `car` (`year`, `brand`, `model`, `location`, 
+                   `door_no`, `seat_no`, `transmission`, `fuel_type`, 
+                   `license`, `car_type_group`, `car_type`, `car_km`, `width`, 
+                   `height`, `length`) 
+                   VALUES ('2022', 'Audi', 'Q8', 'Essen', '4', 
+                           '4', 'Automatic', 'Petrol', 'FWD 1025', 
+                           'Car', 'Luxury car', '2145', '2.15', 
+                           '1.25', '4.10')
+2023-02-12T21:28:07.584050Z	  951 Close stmt	
+2023-02-12T21:28:07.584948Z	  951 Prepare	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:28:07.587135Z	  951 Execute	SELECT * FROM car order by id desc limit 0,1
+2023-02-12T21:28:07.591653Z	  951 Close stmt	
+2023-02-12T21:28:07.631588Z	  951 Quit	
+2023-02-12T21:34:51.172175Z	  952 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T21:34:51.174099Z	  952 Query	SELECT @@version, @@version_comment
+2023-02-12T21:34:51.175406Z	  952 Query	SET NAMES 'utf8mb4' COLLATE 'utf8mb4_general_ci'
+2023-02-12T21:34:51.176658Z	  952 Query	SET lc_messages = 'en_US'
+2023-02-12T21:34:51.179103Z	  953 Connect	root@172.25.0.2 on  using TCP/IP
+2023-02-12T21:34:51.180407Z	  953 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T21:34:51.181762Z	  953 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T21:34:51.184551Z	  952 Query	SET collation_connection = 'utf8mb4_unicode_ci'
+2023-02-12T21:34:51.186099Z	  953 Query	SHOW TABLES FROM `phpmyadmin`
+2023-02-12T21:34:51.187372Z	  953 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T21:34:51.190344Z	  952 Query	SHOW TABLES FROM `oscar_code_challenge`
+2023-02-12T21:34:51.192782Z	  952 Query	SELECT 1 FROM mysql.user LIMIT 1
+2023-02-12T21:34:51.194419Z	  952 Query	SELECT CURRENT_USER()
+2023-02-12T21:34:51.195680Z	  952 Query	SELECT 1 FROM (SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`COLUMN_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`TABLE_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`SCHEMA_PRIVILEGES` UNION SELECT `GRANTEE`, `IS_GRANTABLE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES`) t WHERE `IS_GRANTABLE` = 'YES' AND '''root''@''%''' LIKE `GRANTEE` LIMIT 1
+2023-02-12T21:34:51.197659Z	  952 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='EVENT'
+2023-02-12T21:34:51.199240Z	  952 Query	SELECT `PRIVILEGE_TYPE` FROM `INFORMATION_SCHEMA`.`USER_PRIVILEGES` WHERE GRANTEE='''root''@''%''' AND PRIVILEGE_TYPE='TRIGGER'
+2023-02-12T21:34:51.202310Z	  953 Quit	
+2023-02-12T21:34:51.202416Z	  952 Quit	

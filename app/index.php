@@ -25,7 +25,7 @@ if ($parts[1] != "cars" && $parts[1] != "import_data") {
     exit;
 }
 
-if($parts[1] == 'import_data') {
+if ($parts[1] == 'import_data') {
     $bootstrap->importFilesData($pdoConnection);
 }
 
