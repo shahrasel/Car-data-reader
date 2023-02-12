@@ -19,6 +19,9 @@ class ErrorManager
         ]);
     }
 
+    /**
+     * @throws ErrorException
+     */
     public static function handleError(
         int $errno,
         string $errstr,

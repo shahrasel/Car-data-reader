@@ -2,21 +2,24 @@
 
 namespace Controller;
 
+use PDO;
 use Service\CarManager;
 use Service\ValidationManager;
 
 class CarController
 {
-    public function __construct(private CarManager $carManager)
+    public function __construct(private CarManager $carManager, private PDO $pdoConnection)
     {
     }
 
-    public function processRequest(string $method, ?string $id): void
+    public function processRequest(string $method, $endpoint, ?string $id): void
     {
         if ($id) {
             $this->processResourceRequest($method, $id);
         } else {
-            $this->processCollectionRequest($method);
+            if($endpoint == 'cars') {
+                $this->processCollectionRequest($method);
+            }
         }
     }
 
@@ -81,7 +84,7 @@ class CarController
                 $data = (array) json_decode(file_get_contents("php://input"), true);
 
                 $validationManager = new ValidationManager();
-                $errors = $validationManager->validateData($data);
+                $errors = $validationManager->validateData($data, $this->pdoConnection);
 
                 if ( ! empty($errors)) {
                     http_response_code(422);
@@ -103,21 +106,4 @@ class CarController
                 header("Allow: GET, POST");
         }
     }
-
-    /*private function getValidationErrors(array $data, bool $is_new = true): array
-    {
-        $errors = [];
-
-        if ($is_new && empty($data["name"])) {
-            $errors[] = "name is required";
-        }
-
-        if (array_key_exists("size", $data)) {
-            if (filter_var($data["size"], FILTER_VALIDATE_INT) === false) {
-                $errors[] = "size must be an integer";
-            }
-        }
-
-        return $errors;
-    }*/
 }

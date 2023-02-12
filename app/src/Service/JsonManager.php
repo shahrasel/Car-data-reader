@@ -3,51 +3,56 @@
 namespace Service;
 
 use Exception;
-use Model\Car;
+use PDO;
 
 class JsonManager
 {
     public string $filePath;
+    private PDO $pdoConnection;
 
-    public function __construct(string $filePath)
+    public function __construct(string $filePath, PDO $pdoConnection)
     {
         $this->filePath = $filePath;
+        $this->pdoConnection = $pdoConnection;
     }
 
     /**
      * @throws Exception
      */
-    public function jsonToArray(): array
+    public function jsonToArray(): array | bool
     {
         $handle = @fopen($this->filePath, 'r');
         if ($handle) {
             $strJsonFileContents = file_get_contents($this->filePath);
             $carLists = json_decode($strJsonFileContents, true);
 
-            $carArray = [];
+            $count = 0;
+            $allErrors = [];
             foreach($carLists as $carList) {
-                exit;
-                $car = new Car();
-                $car->location = $carList['Location'] ?? null;
-                $car->brand = $carList['Car Brand'] ?? null;
-                $car->model = $carList['Car Model'] ?? null;
-                $car->license = $carList['License plate'] ?? null;
-                $car->year = $carList['Car year'] ?? null;
-                $car->doorNo = $carList['Number of doors'] ?? null;
-                $car->seatNo = $carList['Number of seats'] ?? null;
-                $car->fuelType = $carList['Fuel type'] ?? null;
-                $car->transmission = $carList['Transmission'] ?? null;
-                $car->width = $carList['Inside width'] ?? null;
-                $car->height = $carList['Inside height'] ?? null;
-                $car->length = $carList['Inside length'] ?? null;
-                $car->carKm = $carList['Car km'] ?? null;
+                $count++;
+                $carUniKeyList = array_combine(CarManager::arrayKeyReplace(array_keys($carList)), $carList);
+                $validationManager = new ValidationManager();
+                $errors = $validationManager->validateData($carUniKeyList, $this->pdoConnection);
 
-                $carArray[] = $car;
+                if ( ! empty($errors)) {
+                    $errors[] = "$this->filePath has an error at the index of: $count";
+                    $allErrors[] = $errors;
+                }
+                else {
+                    $carManager = new CarManager($this->pdoConnection);
+                    $carManager->create($carUniKeyList);
+                }
             }
 
-            return $carArray;
+            if(!empty($allErrors)) {
+                return $allErrors;
+            }
+            else {
+                return false;
+            }
         } else {
-            throw new Exception('File not readable');
+            $allErrors[] = "File $this->filePath is not readable";
+            return $allErrors;
         }
     }
 }
