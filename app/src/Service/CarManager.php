@@ -18,16 +18,13 @@ class CarManager
 
     public function getAll(): array
     {
-        $sql = "SELECT *
-                FROM car";
+        $sql = "SELECT * FROM car";
 
         $stmt = $this->conn->query($sql);
 
         $data = [];
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-            $row["is_available"] = (bool) $row["is_available"];
 
             $data[] = $row;
         }
@@ -53,8 +50,7 @@ class CarManager
 
     public function get(string $id): array | false
     {
-        $sql = "SELECT *
-                FROM car
+        $sql = "SELECT * FROM car
                 WHERE id = :id";
 
         $stmt = $this->conn->prepare($sql);
@@ -64,10 +60,6 @@ class CarManager
         $stmt->execute();
 
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        /*if ($data !== false) {
-            $data["is_available"] = (bool) $data["is_available"];
-        }*/
 
         return $data;
     }

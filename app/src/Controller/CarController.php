@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Service\CarManager;
+use Service\ValidationManager;
 
 class CarController
 {
@@ -13,35 +14,32 @@ class CarController
     public function processRequest(string $method, ?string $id): void
     {
         if ($id) {
-
             $this->processResourceRequest($method, $id);
-
         } else {
-
             $this->processCollectionRequest($method);
-
         }
     }
 
     private function processResourceRequest(string $method, string $id): void
     {
-        $product = $this->carManager->get($id);
+        $car = $this->carManager->get($id);
 
-        if ( ! $product) {
+        if ( ! $car) {
             http_response_code(404);
-            echo json_encode(["message" => "Product not found"]);
+            echo json_encode(["message" => "Car not found"]);
             return;
         }
 
         switch ($method) {
             case "GET":
-                echo json_encode($product);
+                echo json_encode($car);
                 break;
 
             case "PATCH":
                 $data = (array) json_decode(file_get_contents("php://input"), true);
 
-                $errors = $this->getValidationErrors($data, false);
+                $validationManager = new ValidationManager();
+                $errors = $validationManager->validateData($data);
 
                 if ( ! empty($errors)) {
                     http_response_code(422);
@@ -49,10 +47,10 @@ class CarController
                     break;
                 }
 
-                $rows = $this->carManager->update($product, $data);
+                $rows = $this->carManager->update($car, $data);
 
                 echo json_encode([
-                    "message" => "Product $id updated",
+                    "message" => "Car $id is updated",
                     "rows" => $rows
                 ]);
                 break;
@@ -61,7 +59,7 @@ class CarController
                 $rows = $this->carManager->delete($id);
 
                 echo json_encode([
-                    "message" => "Product $id deleted",
+                    "message" => "Car $id is deleted",
                     "rows" => $rows
                 ]);
                 break;
@@ -82,7 +80,8 @@ class CarController
             case "POST":
                 $data = (array) json_decode(file_get_contents("php://input"), true);
 
-                $errors = $this->getValidationErrors($data);
+                $validationManager = new ValidationManager();
+                $errors = $validationManager->validateData($data);
 
                 if ( ! empty($errors)) {
                     http_response_code(422);
@@ -94,7 +93,7 @@ class CarController
 
                 http_response_code(201);
                 echo json_encode([
-                    "message" => "Product created",
+                    "message" => "Car is created",
                     "id" => $id
                 ]);
                 break;
@@ -105,7 +104,7 @@ class CarController
         }
     }
 
-    private function getValidationErrors(array $data, bool $is_new = true): array
+    /*private function getValidationErrors(array $data, bool $is_new = true): array
     {
         $errors = [];
 
@@ -120,5 +119,5 @@ class CarController
         }
 
         return $errors;
-    }
+    }*/
 }

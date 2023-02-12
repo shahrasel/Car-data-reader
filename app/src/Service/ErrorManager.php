@@ -2,6 +2,9 @@
 
 namespace Service;
 
+use ErrorException;
+use Throwable;
+
 class ErrorManager
 {
     public static function handleException(Throwable $exception): void

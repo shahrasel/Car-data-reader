@@ -33,12 +33,12 @@ class DbManager
             foreach ($this->data as $data) {
 
                 /* @var Car $data */
-                ${$this->properties[0]} = $data->year ?? null;
-                ${$this->properties[1]} = $data->brand ?? null;
-                ${$this->properties[2]} = $data->model ?? null;
+                ${$this->properties[0]} = $data->year ?? 0;
+                ${$this->properties[1]} = $data->brand ?? '';
+                ${$this->properties[2]} = $data->model ?? '';
                 ${$this->properties[3]} = $data->location ?? null;
-                ${$this->properties[4]} = $data->doorNo ?? null;
-                ${$this->properties[5]} = $data->seatNo ?? null;
+                ${$this->properties[4]} = $data->doorNo ?? 0;
+                ${$this->properties[5]} = $data->seatNo ?? 0;
                 ${$this->properties[6]} = $data->transmission ?? null;
                 ${$this->properties[7]} = $data->fuelType ?? null;
                 ${$this->properties[8]} = $data->license ?? null;

@@ -8,10 +8,10 @@ class Car
     public string $brand = '';
     public string $model = '';
     public ?string $location = null;
-    public ?string $doorNo = null;
-    public ?string $seatNo = null;
-    public ?string $transmission = null;
-    public ?string $fuelType = null;
+    public ?int $doorNo = null;
+    public ?int $seatNo = null;
+    public string $transmission = '';
+    public string $fuelType = '';
 
     public ?string $license = null;
     public ?string $carTypeGroup = null;

@@ -23,14 +23,16 @@ class DbConnectionManager
         $this->password = $password;
     }
 
-    public function DbConnection(): PDO
+    public function DbConnection(): PDO | string
     {
         try {
-            $conn = new PDO("mysql:host=".$this->server.";port=".$this->port.";dbname=".$this->database."", "$this->userName", "$this->password");
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $conn = new PDO("mysql:host=".$this->server.";port=".$this->port.";dbname=".$this->database.";charset=utf8", "$this->userName", "$this->password", [
+                PDO::ATTR_EMULATE_PREPARES => false,
+                PDO::ATTR_STRINGIFY_FETCHES => false
+            ]);
             return $conn;
         } catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            return "Error: " . $e->getMessage();
         }
     }
 }

@@ -26,6 +26,7 @@ class JsonManager
 
             $carArray = [];
             foreach($carLists as $carList) {
+                exit;
                 $car = new Car();
                 $car->location = $carList['Location'] ?? null;
                 $car->brand = $carList['Car Brand'] ?? null;
