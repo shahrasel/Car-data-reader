@@ -20,7 +20,7 @@ class CarManagerTest extends TestCase
     public function testCarCreatesProperly()
     {
         $carManager = new CarManager($this->pdoConnect);
-        $insertedId = $carManager->create($this->carData1());
+        $insertedId = $carManager->create(SELF::carData1());
 
         $this->assertNotEmpty($insertedId);
         $this->assertIsInt($insertedId);
@@ -30,7 +30,7 @@ class CarManagerTest extends TestCase
     {
 
         $carManager = new CarManager($this->pdoConnect);
-        $insertedId = $carManager->create($this->carData1());
+        $insertedId = $carManager->create(SELF::carData1());
 
         $lastDbCarInfo = $this->getLastCar();
 
@@ -56,9 +56,9 @@ class CarManagerTest extends TestCase
 
 
         $carManager = new CarManager($this->pdoConnect);
-        $carManager->create($this->carData1());
-        $carManager->create($this->carData2());
-        $carManager->create($this->carData3());
+        $carManager->create(SELF::carData1());
+        $carManager->create(SELF::carData2());
+        $carManager->create(SELF::carData3());
 
         $car1 = $carManager->getAll()[0];
 
@@ -83,9 +83,9 @@ class CarManagerTest extends TestCase
     public function testGetSingleCarDataWorksproperly()
     {
         $carManager = new CarManager($this->pdoConnect);
-        $carManager->create($this->carData1());
-        $carManager->create($this->carData2());
-        $carManager->create($this->carData3());
+        $carManager->create(SELF::carData1());
+        $carManager->create(SELF::carData2());
+        $carManager->create(SELF::carData3());
 
         $lastCar = $this->getLastCar();
 
@@ -125,7 +125,7 @@ class CarManagerTest extends TestCase
         $stmt->execute();
     }
 
-    private function carData1(): array
+    public static function carData1(): array
     {
         $data = [];
         $data['year'] = '2022';
@@ -147,7 +147,7 @@ class CarManagerTest extends TestCase
         return $data;
     }
 
-    private function carData2(): array
+    public static function carData2(): array
     {
         $data = [];
         $data['year'] = '2021';
@@ -169,7 +169,7 @@ class CarManagerTest extends TestCase
         return $data;
     }
 
-    private function carData3(): array
+    public static function carData3(): array
     {
         $data = [];
         $data['year'] = '2023';

@@ -31,7 +31,8 @@ class DbConnectionManager
     public function DbConnection(): PDO | string
     {
         try {
-            return new PDO("mysql:host=".$this->server.";port=".$this->port.";dbname=".$this->database.";charset=utf8", "$this->userName", "$this->password", [
+            return new PDO(
+                "mysql:host=".$this->server.";port=".$this->port.";dbname=".$this->database.";charset=utf8", "$this->userName", "$this->password", [
                 PDO::ATTR_EMULATE_PREPARES => false,
                 PDO::ATTR_STRINGIFY_FETCHES => false
             ]);

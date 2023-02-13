@@ -19,42 +19,50 @@ class CsvManager
     /**
      * @throws Exception
      */
-    public function insertCsvDataToDb(): array | bool
+    public function readCsvFileToArray(): array
     {
         $handle = @fopen($this->filePath, 'r');
         if ($handle) {
-            $carLists   = array_map('str_getcsv', file($this->filePath));
+            $carLists = array_map('str_getcsv', file($this->filePath));
             $header = array_shift($carLists);
-            $count = 0;
-            $allErrors = [];
-            foreach($carLists as $carList) {
-                $count++;
-                $carList = array_combine($header, $carList);
-                $carUniKeyList = array_combine(
-                    CarManager::arrayKeyReplace(array_keys($carList)), $carList
-                );
 
-                $errors = $this->dataValidation($carUniKeyList);
+            $totalCarList = [];
+            foreach ($carLists as $carList) {
+                $totalCarList[] = array_combine($header, $carList);
+            }
+            return $totalCarList;
+        } else {
+            throw new Exception('File is not readable');
+        }
+    }
 
-                if ( ! empty($errors)) {
-                    $errors[] = "$this->filePath has an error at index: $count";
-                    $allErrors[] = $errors;
-                }
-                else {
-                    $carManager = new CarManager($this->pdoConnection);
-                    $carManager->create($carUniKeyList);
-                }
-            }
-            if(!empty($allErrors)) {
-                return $allErrors;
-            }
-            else {
-                return false;
+    /**
+     * @throws Exception
+     */
+    public function insertCsvDataToDb(array $carLists): array | bool
+    {
+        $count = 0;
+        $allErrors = [];
+        foreach($carLists as $carList) {
+            $count++;
+            $carUniKeyList = array_combine(
+                CarManager::arrayKeyReplace(array_keys($carList)), $carList
+            );
+
+            $errors = $this->dataValidation($carUniKeyList);
+
+            if ( ! empty($errors)) {
+                $errors[] = "$this->filePath has an error at index: $count";
+                $allErrors[] = $errors;
+            } else {
+                $carManager = new CarManager($this->pdoConnection);
+                $carManager->create($carUniKeyList);
             }
         }
-        else {
-            $allErrors[] = "File $this->filePath is not readable";
+        if (!empty($allErrors)) {
             return $allErrors;
+        } else {
+            return false;
         }
     }
 

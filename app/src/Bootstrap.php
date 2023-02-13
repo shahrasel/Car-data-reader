@@ -29,7 +29,9 @@ class Bootstrap
     public function readCsv(string $filename, PDO $pdoConnection): array|string
     {
         try {
-            return (new CsvManager(__DIR__ . '/Resource/' .$filename, $pdoConnection))->insertCsvDataToDb();
+            $csvManager = new CsvManager(__DIR__ . '/Resource/' .$filename, $pdoConnection);
+            $csvArray = $csvManager->readCsvFileToArray();
+            return $csvManager->insertCsvDataToDb($csvArray);
         } catch (Exception $e) {
             return $e->getMessage();
         }
@@ -38,7 +40,9 @@ class Bootstrap
     public function readJson(string $filename, PDO $pdoConnection): array|string
     {
         try {
-            return (new JsonManager(__DIR__ . '/Resource/' .$filename, $pdoConnection))->insertJsonDataToDb();
+            $jsonManager = new JsonManager(__DIR__ . '/Resource/' .$filename, $pdoConnection);
+            $jsonArray = $jsonManager->readJsonFileToArray();
+            return $jsonManager->insertJsonDataToDb($jsonArray);
         } catch (Exception $e) {
             return $e->getMessage();
         }

@@ -1,0 +1,4 @@
+/app/vendor/*
+/data
+/mysql
+/app/.phpunit.result.cache

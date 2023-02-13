@@ -10,70 +10,104 @@ class ValidationManager
     {
         $error = [];
 
-        if(empty($data['year'])) {
+        if (empty($data['year'])) {
             $error[] = "Year is required";
         }
-        if(array_key_exists("year", $data) && !empty($data['year'])) {
+        if (array_key_exists("year", $data) && !empty($data['year'])) {
             $isError = $this->validateStrLen('Year', $data['year'], 1, 4);
-            if($isError)
+            if ($isError) {
                 $error[] = $isError;
+            }
         }
 
-        if(empty($data['brand'])) {
+        if (empty($data['brand'])) {
             $error[] = "Brand is required";
         }
-        if(array_key_exists("brand", $data) && !empty($data['brand'])) {
+        if (array_key_exists("brand", $data) && !empty($data['brand'])) {
             $isError = $this->validateStrLen('Brand', $data['brand'], 1, 50);
-            if($isError)
+            if ($isError) {
                 $error[] = $isError;
+            }
         }
 
-        if(empty($data['model'])) {
+        if (empty($data['model'])) {
             $error[] = "Model is required";
         }
-        if(array_key_exists("model", $data) && !empty($data['model'])) {
+        if (array_key_exists("model", $data) && !empty($data['model'])) {
             $isError = $this->validateStrLen('Model', $data['model'], 2, 50);
-            if($isError)
+            if ($isError) {
                 $error[] = $isError;
+            }
         }
 
-        if(array_key_exists("door_no", $data) && !empty($data['door_no'])) {
-            $isError = $this->validateStrLen(
-                'Door number', $data['door_no'], 1, 2
-            );
-            if($isError)
-                $error[] = $isError;
+        if (empty($data['door_no'])) {
+            $error[] = "Door is required";
+        }
+        if (array_key_exists("door_no", $data) && !empty($data['door_no'])) {
+            if ( ((int) $data['door_no']) <0 ) {
+                $error[] = "Door number can't be negative";
+            } else {
+                $isError = $this->validateStrLen(
+                    'Door number',
+                    $data['door_no'],
+                    1,
+                    2
+                );
+                if ($isError) {
+                    $error[] = $isError;
+                }
+            }
         }
 
-        if(array_key_exists("seat_no", $data) && !empty($data['seat_no'])) {
-            $isError = $this->validateStrLen(
-                'Seat number', $data['seat_no'], 1, 2
-            );
-            if($isError)
-                $error[] = $isError;
+        if (empty($data['seat_no'])) {
+            $error[] = "Seat is required";
+        }
+        if (array_key_exists("seat_no", $data) && !empty($data['seat_no'])) {
+            if ( ((int) $data['seat_no']) <0 ) {
+                $error[] = "Seat number can't be negative";
+            } else {
+                $isError = $this->validateStrLen(
+                    'Seat number',
+                    $data['seat_no'],
+                    1,
+                    2
+                );
+                if ($isError) {
+                    $error[] = $isError;
+                }
+            }
         }
 
-        if(array_key_exists("transmission", $data)
+        if (empty($data['transmission'])) {
+            $error[] = "Transmission is required";
+        }
+        if (array_key_exists("transmission", $data)
             && !empty($data['transmission'])) {
             $isError = $this->validateStrLen(
                 'Transmission', $data['transmission'], 2, 50
             );
-            if($isError)
+            if ($isError) {
                 $error[] = $isError;
+            }
         }
 
-        if(array_key_exists("fuel_type", $data)
+        if (empty($data['fuel_type'])) {
+            $error[] = "Fuel type is required";
+        }
+        if (array_key_exists("fuel_type", $data)
             && !empty($data['fuel_type'])) {
             $isError = $this->validateStrLen(
                 'Fuel type', $data['fuel_type'], 2, 50
             );
-            if($isError)
+            if ($isError) {
                 $error[] = $isError;
+            }
         }
 
         $isError = $this->isDuplicate($data, $pdoConnection);
-        if($isError)
+        if ($isError) {
             $error[] = $isError;
+        }
 
         return $error;
     }
@@ -133,7 +167,7 @@ class ValidationManager
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if(!empty($row)) {
+        if (!empty($row)) {
             return "data duplication found!";
         }
         return false;
