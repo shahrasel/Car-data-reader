@@ -89,7 +89,7 @@ see screenshot to add car:
 3. door number, seat number, year, car km, width, height, length can't be negative 
 4. year can have max 4 character, seat number, door number can have max 2 characters.
 5. door number, seat number, transmission, fuel type can have max 50 characters.
-6. data duplication is checked while inserting in DB with create API or initial "import data" API based on querying all criterias
+6. data duplication is checked while inserting in DB with create API or initial "import data" API based on querying all criterias. No duplicate data will be allowed to insert in the DB.
 
 # Testing
 Testing scripts written could be found in testing folder which consist of functional and unit test in FunctionalTest and UnitTest sub folders respectively. Run the following command to to test:

@@ -14,10 +14,10 @@ class ValidationManager
             $error[] = "Year is required";
         }
         if (array_key_exists("year", $data) && !empty($data['year'])) {
-            if ( ((int) $data['year']) <0 ) {
-                $error[] = "Year can't be negative";
+            if ( ((int) $data['year']) <=0 ) {
+                $error[] = "Year is not valid";
             } else {
-                $isError = $this->validateStrLen('Year', $data['year'], 1, 4);
+                $isError = $this->validateStrLen('Year', $data['year'], 4, 4);
                 if ($isError) {
                     $error[] = $isError;
                 }
@@ -48,8 +48,8 @@ class ValidationManager
             $error[] = "Door number is required";
         }
         if (array_key_exists("door_no", $data) && !empty($data['door_no'])) {
-            if ( ((int) $data['door_no']) <0 ) {
-                $error[] = "Door number can't be negative";
+            if ( ((int) $data['door_no']) <=0 ) {
+                $error[] = "Door number is not valid";
             } else {
                 $isError = $this->validateStrLen(
                     'Door number',
@@ -67,8 +67,8 @@ class ValidationManager
             $error[] = "Seat number is required";
         }
         if (array_key_exists("seat_no", $data) && !empty($data['seat_no'])) {
-            if ( ((int) $data['seat_no']) <0 ) {
-                $error[] = "Seat number can't be negative";
+            if ( ((int) $data['seat_no']) <=0 ) {
+                $error[] = "Seat number is not valid";
             } else {
                 $isError = $this->validateStrLen(
                     'Seat number',
@@ -150,8 +150,8 @@ class ValidationManager
 
         if (array_key_exists("car_km", $data)
             && !empty($data['car_km'])) {
-            if ( ((int) $data['car_km']) <0 ) {
-                $error[] = "Car km can't be negative";
+            if ( ((float) $data['car_km']) <=0 ) {
+                $error[] = "Car km is invalid";
             } else {
                 $isError = $this->validateStrLen(
                     'Car Km',
@@ -167,8 +167,8 @@ class ValidationManager
 
         if (array_key_exists("width", $data)
             && !empty($data['width'])) {
-            if ( ((int) $data['width']) <0 ) {
-                $error[] = "Width can't be negative";
+            if ( ((float) $data['width']) <=0 ) {
+                $error[] = "Width is invalid";
             } else {
                 $isError = $this->validateStrLen(
                     'Width',
@@ -184,8 +184,8 @@ class ValidationManager
 
         if (array_key_exists("height", $data)
             && !empty($data['height'])) {
-            if ( ((int) $data['height']) <0 ) {
-                $error[] = "Height can't be negative";
+            if ( ((float) $data['height']) <=0 ) {
+                $error[] = "Height is invalid";
             } else {
                 $isError = $this->validateStrLen(
                     'Height',
@@ -201,7 +201,7 @@ class ValidationManager
 
         if (array_key_exists("length", $data)
             && !empty($data['length'])) {
-            if ( ((int) $data['length']) <0 ) {
+            if ( ((float) $data['length']) <=0 ) {
                 $error[] = "Length can't be negative";
             } else {
                 $isError = $this->validateStrLen(
