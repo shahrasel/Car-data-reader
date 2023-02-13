@@ -19,7 +19,7 @@ class CsvManager
     /**
      * @throws Exception
      */
-    public function csvToArray(): array | bool
+    public function insertCsvDataToDb(): array | bool
     {
         $handle = @fopen($this->filePath, 'r');
         if ($handle) {

@@ -19,7 +19,7 @@ class JsonManager
     /**
      * @throws Exception
      */
-    public function jsonToArray(): array | bool
+    public function insertJsonDataToDb(): array | bool
     {
         $handle = @fopen($this->filePath, 'r');
         if ($handle) {

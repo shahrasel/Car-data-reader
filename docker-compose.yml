@@ -31,6 +31,19 @@ services:
     volumes:
       - "./data/db/mysql:/var/lib/mysql"
 
+  mysqltestdb:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_DATABASE=${MYSQL_TEST_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_TEST_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_TEST_USER}
+      - MYSQL_PASSWORD=${MYSQL_TEST_PASSWORD}
+    ports:
+      - "8991:3306"
+    volumes:
+      - "./data/db/devmysql:/var/lib/mysql"
+
   phpmyadmin:
     image: phpmyadmin
     restart: always
@@ -39,3 +52,12 @@ services:
     environment:
       PMA_HOST: mysqldb
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+  phpmyadmintest:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - "8092:80"
+    environment:
+      PMA_HOST: mysqltestdb
+      MYSQL_ROOT_PASSWORD: ${MYSQL_TEST_ROOT_PASSWORD}
