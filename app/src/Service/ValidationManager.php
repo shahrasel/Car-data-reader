@@ -45,7 +45,7 @@ class ValidationManager
         }
 
         if (empty($data['door_no'])) {
-            $error[] = "Door is required";
+            $error[] = "Door number is required";
         }
         if (array_key_exists("door_no", $data) && !empty($data['door_no'])) {
             if ( ((int) $data['door_no']) <0 ) {
@@ -64,7 +64,7 @@ class ValidationManager
         }
 
         if (empty($data['seat_no'])) {
-            $error[] = "Seat is required";
+            $error[] = "Seat number is required";
         }
         if (array_key_exists("seat_no", $data) && !empty($data['seat_no'])) {
             if ( ((int) $data['seat_no']) <0 ) {

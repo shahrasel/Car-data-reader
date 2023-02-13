@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Exception\ClientException;
 use PHPUnit\Framework\TestCase;
 use Service\CarManager;
 use Service\CsvManager;
@@ -97,6 +98,12 @@ class CarControllerTest extends TestCase
         $this->assertSame($randomCarInfo['length'], $selCar->length);
     }
 
+    public function testSingleCarWithInvalidIdShowsError()
+    {
+        $this->expectException(ClientException::class);
+        $response = $this->http->request('GET', 'cars/1000000000');
+    }
+
     public function testCreatesCarProperly()
     {
         $randomCarInfo = $this->getRandomCar();
@@ -114,7 +121,7 @@ class CarControllerTest extends TestCase
                 'license' => 'FWD 1584',
                 'car_type_group' => 'Car',
                 'car_type' => 'Luxury Car',
-                'car_km' => microtime(),
+                'car_km' => time(),
                 'width' => '1.25',
                 'height' => '1.58',
                 'length' => '2.53',

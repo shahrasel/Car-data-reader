@@ -10,6 +10,7 @@ $bootstrap = new Bootstrap();
 $bootstrap->loadDotEnv();
 $bootstrap->loadConfig();
 $pdoConnection = $bootstrap->loadDBConnection();
+$pdoTestConnection = $bootstrap->loadTestDBConnection();
 
 
 set_error_handler("\\Service\\ErrorManager::handleError");
@@ -27,6 +28,8 @@ if ($parts[1] != "cars" && $parts[1] != "import_data") {
 
 if ($parts[1] == 'import_data') {
     $bootstrap->importCarTableInDb($pdoConnection);
+    $bootstrap->importCarTableInTestDb($pdoTestConnection);
+
     $bootstrap->importFilesData($pdoConnection);
 }
 

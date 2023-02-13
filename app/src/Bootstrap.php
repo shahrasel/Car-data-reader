@@ -26,6 +26,11 @@ class Bootstrap
         return (new DbConnectionManager($_ENV['MYSQL_HOST'], $_ENV['MYSQL_PORT'], $_ENV['MYSQL_DATABASE'], $_ENV['MYSQL_ROOT_USER'], $_ENV['MYSQL_ROOT_PASSWORD']))->DbConnection();
     }
 
+    public function loadTestDBConnection(): PDO
+    {
+        return (new DbConnectionManager($_ENV['MYSQL_HOST'], $_ENV['MYSQL_TEST_PORT'], $_ENV['MYSQL_TEST_DATABASE'], $_ENV['MYSQL_TEST_ROOT_USER'], $_ENV['MYSQL_TEST_ROOT_PASSWORD']))->DbConnection();
+    }
+
     public function readCsv(string $filename, PDO $pdoConnection): array|string
     {
         try {
@@ -49,6 +54,33 @@ class Bootstrap
     }
 
     public function importCarTableInDb(PDO $pdoConnection)
+    {
+        $pdoConnection->query("DROP TABLE IF EXISTS `car`");
+        $pdoConnection->query("CREATE TABLE `car` (
+  `id` int NOT NULL,
+  `year` varchar(4) DEFAULT NULL,
+  `brand` varchar(255) DEFAULT NULL,
+  `model` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `door_no` varchar(2) DEFAULT NULL,
+  `seat_no` varchar(2) DEFAULT NULL,
+  `transmission` varchar(255) DEFAULT NULL,
+  `fuel_type` varchar(255) DEFAULT NULL,
+  `license` varchar(255) DEFAULT NULL,
+  `car_type_group` varchar(255) DEFAULT NULL,
+  `car_type` varchar(255) DEFAULT NULL,
+  `car_km` varchar(255) DEFAULT NULL,
+  `width` varchar(255) DEFAULT NULL,
+  `height` varchar(255) DEFAULT NULL,
+  `length` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci");
+
+        $pdoConnection->query("ALTER TABLE `car` ADD PRIMARY KEY (`id`)");
+        $pdoConnection->query("ALTER TABLE `car`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1");
+    }
+
+    public function importCarTableInTestDb(PDO $pdoConnection)
     {
         $pdoConnection->query("DROP TABLE IF EXISTS `car`");
         $pdoConnection->query("CREATE TABLE `car` (

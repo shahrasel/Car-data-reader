@@ -29,8 +29,8 @@ class ValidationManagerTest extends TestCase
         $this->assertContains('Year is required', $errors);
         $this->assertContains('Brand is required', $errors);
         $this->assertContains('Model is required', $errors);
-        $this->assertContains('Door is required', $errors);
-        $this->assertContains('Seat is required', $errors);
+        $this->assertContains('Door number is required', $errors);
+        $this->assertContains('Seat number is required', $errors);
         $this->assertContains('Transmission is required', $errors);
         $this->assertContains('Fuel type is required', $errors);
 

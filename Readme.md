@@ -15,7 +15,7 @@ Please see the image below to get the IP from a Macbook:
 
 port numbers for containers depending on machine can be updated in the "docker-compose.yml" file in the root directory.
 
-After setting the environmental variables and port number (if needed), run the following code to build and run the containers.
+After setting the environmental variables and port number (if needed), go into the project folder in bash and run the following code to build and start the containers.
 
 ```bash
 docker compose --env-file app/.env build && docker compose --env-file app/.env up -d
@@ -27,13 +27,13 @@ Then the following command to install dependencies:
 docker-compose exec php-fpm composer install
 ```
 
-To read and load the data from CSV and json files, you have to call the following API with GET method:
+To read and load the data from CSV and json files, you have to call the following API with GET method in an API client or in browser:
 ```bash
 http://localhost:8081/import_data
 ```
-notice the port number 8081 is set in docker-compose.yml for nginx service.
+Notice the port number 8081 is set in docker-compose.yml for nginx service.
 
-After validation all valid data will be inserted in the database and error messages will be shown for the respective files and index. See screenshot below:
+After validation all valid data will be inserted in the database and error messages which data are not able to insert will be shown for the respective file names and index. See screenshot below:
 ![validation!](images/Screenshot 2023-02-13 at 5.42.53 PM.png)
 
 
@@ -62,6 +62,23 @@ To add a car call the following API with POST method:
 ```bash
 http://localhost:8081/cars
 ```
+The field names are: 
+1. year
+2. brand
+3. model
+4. location
+5. door_no 
+6. seat_no 
+7. transmission 
+8. fuel_type 
+9. license 
+10. car_type_group
+11. car_type 
+12. car_km 
+13. width 
+14. height 
+15. length
+
 see screenshot to add car:
 ![added!](images/Screenshot 2023-02-13 at 5.25.22 PM.png)
 
