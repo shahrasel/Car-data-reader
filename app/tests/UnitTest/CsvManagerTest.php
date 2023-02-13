@@ -36,22 +36,22 @@ class CsvManagerTest extends TestCase
     {
         $csvManager = new CsvManager(SELF::REALFILEPATH, $this->pdoConnect);
 
-        $this->assertCount(10, $csvManager->readCsvFileToArray());
+        $this->assertCount(10, $csvManager->readFileToArray());
     }
 
     public function testExceptionIfCsvFileNotReadable() {
         $this->expectException(Exception::class);
         $csvManager = new CsvManager(SELF::FAKEFILEPATH, $this->pdoConnect);
-        $csvManager->readCsvFileToArray();
+        $csvManager->readFileToArray();
     }
 
     public function testCsvDataToDbInsertProperly()
     {
         $csvManager = new CsvManager(SELF::REALFILEPATH, $this->pdoConnect);
-        $csvManager->insertCsvDataToDb($csvManager->readCsvFileToArray());
+        $csvManager->insertDataToDb($csvManager->readFileToArray());
 
         $this->assertCount(
-            count($csvManager->readCsvFileToArray()),
+            count($csvManager->readFileToArray()),
             (new CarManager($this->pdoConnect))->getAll()
         );
     }
@@ -62,7 +62,7 @@ class CsvManagerTest extends TestCase
             SELF::CORRUPTEDDATAFILEPATH,
             $this->pdoConnect
         );
-        $carLists = $csvManager->readCsvFileToArray();
+        $carLists = $csvManager->readFileToArray();
 
         $allErrors = [];
         foreach($carLists as $carList) {
@@ -79,7 +79,7 @@ class CsvManagerTest extends TestCase
 
         $validDataCount = count($carLists) - count($allErrors);
 
-        $csvManager->insertCsvDataToDb($csvManager->readCsvFileToArray());
+        $csvManager->insertDataToDb($csvManager->readFileToArray());
 
         $this->assertCount(
             $validDataCount, (new CarManager($this->pdoConnect))->getAll()

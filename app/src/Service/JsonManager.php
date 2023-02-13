@@ -5,7 +5,7 @@ namespace Service;
 use Exception;
 use PDO;
 
-class JsonManager
+class JsonManager implements ResourceDataManagerInterfeace
 {
     public string $filePath;
     private PDO $pdoConnection;
@@ -16,19 +16,18 @@ class JsonManager
         $this->pdoConnection = $pdoConnection;
     }
 
-    public function readJsonFileToArray(): array
+    public function readFileToArray(): array
     {
         $handle = @fopen($this->filePath, 'r');
         if ($handle) {
             $strJsonFileContents = file_get_contents($this->filePath);
-            $carLists = json_decode($strJsonFileContents, true);
-            return $carLists;
+            return json_decode($strJsonFileContents, true);
         } else {
             throw new Exception('File is not readable');
         }
     }
 
-    public function insertJsonDataToDb(array $carLists): array | bool
+    public function insertDataToDb(array $carLists): array | bool
     {
         $count = 0;
         $allErrors = [];
@@ -41,7 +40,7 @@ class JsonManager
             $errors = $this->dataValidation($carUniKeyList);
 
             if ( ! empty($errors)) {
-                $errors[] = "$this->filePath has an error at index: $count";
+                $errors[] = "$this->filePath has an error at index: $count and couldn't be inserted";
                 $allErrors[] = $errors;
             } else {
                 $carManager = new CarManager($this->pdoConnection);
@@ -59,8 +58,7 @@ class JsonManager
     public function dataValidation(array $carUniKeyList): array
     {
         $validationManager = new ValidationManager();
-        $errors = $validationManager
+        return $validationManager
             ->validateData($carUniKeyList, $this->pdoConnection);
-        return $errors;
     }
 }

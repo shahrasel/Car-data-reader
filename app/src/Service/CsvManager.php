@@ -5,7 +5,7 @@ namespace Service;
 use Exception;
 use PDO;
 
-class CsvManager
+class CsvManager implements ResourceDataManagerInterfeace
 {
     public string $filePath;
     private PDO $pdoConnection;
@@ -19,7 +19,7 @@ class CsvManager
     /**
      * @throws Exception
      */
-    public function readCsvFileToArray(): array
+    public function readFileToArray(): array
     {
         $handle = @fopen($this->filePath, 'r');
         if ($handle) {
@@ -39,7 +39,7 @@ class CsvManager
     /**
      * @throws Exception
      */
-    public function insertCsvDataToDb(array $carLists): array | bool
+    public function insertDataToDb(array $carLists): array | bool
     {
         $count = 0;
         $allErrors = [];
@@ -52,7 +52,8 @@ class CsvManager
             $errors = $this->dataValidation($carUniKeyList);
 
             if ( ! empty($errors)) {
-                $errors[] = "$this->filePath has an error at index: $count";
+                $errors[] = "$this->filePath has an error at index: $count 
+                and couldn't be inserted";
                 $allErrors[] = $errors;
             } else {
                 $carManager = new CarManager($this->pdoConnection);
@@ -69,10 +70,9 @@ class CsvManager
     public function dataValidation(array $carUniKeyList): array
     {
         $validationManager = new ValidationManager();
-        $errors = $validationManager->validateData(
+        return $validationManager->validateData(
             $carUniKeyList,
             $this->pdoConnection
         );
-        return $errors;
     }
 }

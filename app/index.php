@@ -26,6 +26,7 @@ if ($parts[1] != "cars" && $parts[1] != "import_data") {
 }
 
 if ($parts[1] == 'import_data') {
+    $bootstrap->importCarTableInDb($pdoConnection);
     $bootstrap->importFilesData($pdoConnection);
 }
 

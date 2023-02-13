@@ -14,9 +14,13 @@ class ValidationManager
             $error[] = "Year is required";
         }
         if (array_key_exists("year", $data) && !empty($data['year'])) {
-            $isError = $this->validateStrLen('Year', $data['year'], 1, 4);
-            if ($isError) {
-                $error[] = $isError;
+            if ( ((int) $data['year']) <0 ) {
+                $error[] = "Year can't be negative";
+            } else {
+                $isError = $this->validateStrLen('Year', $data['year'], 1, 4);
+                if ($isError) {
+                    $error[] = $isError;
+                }
             }
         }
 
@@ -104,10 +108,121 @@ class ValidationManager
             }
         }
 
-        $isError = $this->isDuplicate($data, $pdoConnection);
-        if ($isError) {
-            $error[] = $isError;
+        if (array_key_exists("location", $data)
+            && !empty($data['location'])) {
+            $isError = $this->validateStrLen(
+                'Location', $data['location'], 2, 100
+            );
+            if ($isError) {
+                $error[] = $isError;
+            }
         }
+
+        if (array_key_exists("license", $data)
+            && !empty($data['license'])) {
+            $isError = $this->validateStrLen(
+                'License', $data['license'], 2, 50
+            );
+            if ($isError) {
+                $error[] = $isError;
+            }
+        }
+
+        if (array_key_exists("car_type_group", $data)
+            && !empty($data['car_type_group'])) {
+            $isError = $this->validateStrLen(
+                'Car Type Group', $data['car_type_group'], 2, 100
+            );
+            if ($isError) {
+                $error[] = $isError;
+            }
+        }
+
+        if (array_key_exists("car_type", $data)
+            && !empty($data['car_type'])) {
+            $isError = $this->validateStrLen(
+                'Car type', $data['car_type'], 2, 50
+            );
+            if ($isError) {
+                $error[] = $isError;
+            }
+        }
+
+        if (array_key_exists("car_km", $data)
+            && !empty($data['car_km'])) {
+            if ( ((int) $data['car_km']) <0 ) {
+                $error[] = "Car km can't be negative";
+            } else {
+                $isError = $this->validateStrLen(
+                    'Car Km',
+                    $data['car_km'],
+                    2,
+                    10
+                );
+                if ($isError) {
+                    $error[] = $isError;
+                }
+            }
+        }
+
+        if (array_key_exists("width", $data)
+            && !empty($data['width'])) {
+            if ( ((int) $data['width']) <0 ) {
+                $error[] = "Width can't be negative";
+            } else {
+                $isError = $this->validateStrLen(
+                    'Width',
+                    $data['width'],
+                    1,
+                    10
+                );
+                if ($isError) {
+                    $error[] = $isError;
+                }
+            }
+        }
+
+        if (array_key_exists("height", $data)
+            && !empty($data['height'])) {
+            if ( ((int) $data['height']) <0 ) {
+                $error[] = "Height can't be negative";
+            } else {
+                $isError = $this->validateStrLen(
+                    'Height',
+                    $data['height'],
+                    1,
+                    10
+                );
+                if ($isError) {
+                    $error[] = $isError;
+                }
+            }
+        }
+
+        if (array_key_exists("length", $data)
+            && !empty($data['length'])) {
+            if ( ((int) $data['length']) <0 ) {
+                $error[] = "Length can't be negative";
+            } else {
+                $isError = $this->validateStrLen(
+                    'Length',
+                    $data['length'],
+                    1,
+                    10
+                );
+                if ($isError) {
+                    $error[] = $isError;
+                }
+            }
+        }
+
+        if(empty($error)) {
+            $isError = $this->isDuplicate($data, $pdoConnection);
+            if ($isError) {
+                $error[] = $isError;
+            }
+        }
+
 
         return $error;
     }

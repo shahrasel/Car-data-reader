@@ -35,20 +35,20 @@ class JsonManagerTest extends TestCase
     {
         $jsonManager = new JsonManager(SELF::REALFILEPATH, $this->pdoConnect);
 
-        $this->assertCount(10, $jsonManager->readJsonFileToArray());
+        $this->assertCount(10, $jsonManager->readFileToArray());
     }
 
     public function testExceptionIfJsonFileNotReadable() {
         $this->expectException(Exception::class);
         $jsonManager = new JsonManager(SELF::FAKEFILEPATH, $this->pdoConnect);
-        $jsonManager->readJsonFileToArray();
+        $jsonManager->readFileToArray();
     }
 
     public function testJsonDataToDbInsertProperly()
     {
         $jsonManager = new JsonManager(SELF::REALFILEPATH, $this->pdoConnect);
 
-        $carLists = $jsonManager->readJsonFileToArray();
+        $carLists = $jsonManager->readFileToArray();
 
         $allErrors = [];
         foreach($carLists as $carList) {
@@ -65,7 +65,7 @@ class JsonManagerTest extends TestCase
 
         $validDataCount = count($carLists) - count($allErrors);
 
-        $jsonManager->insertJsonDataToDb($jsonManager->readJsonFileToArray());
+        $jsonManager->insertDataToDb($jsonManager->readFileToArray());
 
         $this->assertCount(
             $validDataCount,
@@ -79,7 +79,7 @@ class JsonManagerTest extends TestCase
             SELF::CORRUPTEDDATAFILEPATH,
             $this->pdoConnect
         );
-        $jsonManager->insertJsonDataToDb($jsonManager->readJsonFileToArray());
+        $jsonManager->insertDataToDb($jsonManager->readFileToArray());
 
         $this->assertCount(6, (new CarManager($this->pdoConnect))->getAll());
     }
