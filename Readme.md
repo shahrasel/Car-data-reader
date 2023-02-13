@@ -27,7 +27,7 @@ Then the following command to install dependencies:
 docker-compose exec php-fpm composer install
 ```
 
-To read and load the data from CSV and json files, you have to call the following API with GET method in an API client or in browser:
+To read and import the data from CSV and json files to database, you have to call the following API with GET method in an API client or in browser:
 ```bash
 http://localhost:8081/import_data
 ```

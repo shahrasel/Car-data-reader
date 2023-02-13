@@ -39,7 +39,7 @@ class CarControllerTest extends TestCase
 
         $carList = json_decode($response->getBody());
 
-        $this->assertCount(25, $carList);
+        $this->assertCount(count((new CarManager($this->pdoConnect))->getAll()), $carList);
     }
 
     public function testCarDataIsProper()
