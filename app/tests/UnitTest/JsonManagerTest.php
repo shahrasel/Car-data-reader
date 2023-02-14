@@ -7,7 +7,7 @@ use Service\JsonManager;
 
 class JsonManagerTest extends TestCase
 {
-    private $pdoConnect;
+    private string|PDO $pdoConnect;
 
     private const REALFILEPATH =
         __DIR__ . '/../../src/Resource/source-2.json';

@@ -1,20 +1,26 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Service\CarManager;
 use Service\DbConnectionManager;
-use Service\JsonManager;
 use Service\ValidationManager;
 
 class ValidationManagerTest extends TestCase
 {
-    private $pdoConnect;
+    private string|PDO $pdoConnect;
 
     protected function setUp(): void
     {
         parent::setUp();
         (new Bootstrap())->loadDotEnv();
-        $this->pdoConnect = (new DbConnectionManager($_ENV['MYSQL_HOST'], $_ENV['MYSQL_TEST_PORT'], $_ENV['MYSQL_TEST_DATABASE'], $_ENV['MYSQL_TEST_ROOT_USER'], $_ENV['MYSQL_TEST_ROOT_PASSWORD']))->DbConnection();
+        $this->pdoConnect = (
+            new DbConnectionManager(
+                $_ENV['MYSQL_HOST'],
+                $_ENV['MYSQL_TEST_PORT'],
+                $_ENV['MYSQL_TEST_DATABASE'],
+                $_ENV['MYSQL_TEST_ROOT_USER'],
+                $_ENV['MYSQL_TEST_ROOT_PASSWORD']
+            )
+        )->DbConnection();
 
         $this->deleteAllCar();
     }
@@ -68,24 +74,6 @@ class ValidationManagerTest extends TestCase
 
     public static function carEmptyData(): array
     {
-        /*
-         * $data = [];
-        $data['year'] = '202234';
-        $data['brand'] = 'Audi';
-        $data['model'] = 'Q8';
-        $data['location'] = 'Essen';
-        $data['door_no'] = '4';
-        $data['seat_no'] = '4';
-        $data['transmission'] = 'Automatic';
-        $data['fuel_type'] = 'Petrol';
-        $data['license'] = 'FWD 1025';
-        $data['car_type_group'] = 'Car';
-        $data['car_type'] = 'Luxury car';
-        $data['car_km'] = '2145';
-        $data['width'] = '2.15';
-        $data['height'] = '1.25';
-        $data['length'] = '4.10';
-         */
         $data = [];
         $data['year'] = '';
         $data['brand'] = '';

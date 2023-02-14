@@ -4,7 +4,6 @@ use PHPUnit\Framework\TestCase;
 use Service\CarManager;
 use Service\CsvManager;
 use Service\DbConnectionManager;
-use Service\ValidationManager;
 
 class CsvManagerTest extends TestCase
 {
