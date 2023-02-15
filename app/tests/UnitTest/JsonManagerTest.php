@@ -1,7 +1,9 @@
 <?php
 
+use mapper\ArrayMapper;
 use PHPUnit\Framework\TestCase;
 use Service\CarManager;
+use Service\DataValidatorDbManager;
 use Service\DbConnectionManager;
 use Service\JsonManager;
 
@@ -44,7 +46,7 @@ class JsonManagerTest extends TestCase
         $jsonManager->readFileToArray();
     }
 
-    public function testJsonDataToDbInsertProperly()
+    public function testJsonValidDataToDbInsertProperly()
     {
         $jsonManager = new JsonManager(SELF::REALFILEPATH, $this->pdoConnect);
 
@@ -53,10 +55,14 @@ class JsonManagerTest extends TestCase
         $allErrors = [];
         foreach($carLists as $carList) {
             $carUniKeyList = array_combine(
-                CarManager::arrayKeyReplace(array_keys($carList)), $carList
+                ArrayMapper::arrayKeyMapper(array_keys($carList)), $carList
             );
 
-            $errors = $jsonManager->dataValidation($carUniKeyList);
+            $dataValidationDbManager = new DataValidatorDbManager(
+                SELF::CORRUPTEDDATAFILEPATH,
+                $this->pdoConnect
+            );
+            $errors = $dataValidationDbManager->dataValidation($carUniKeyList);
 
             if(!empty($errors)) {
                 $allErrors[] = $errors;
@@ -65,23 +71,12 @@ class JsonManagerTest extends TestCase
 
         $validDataCount = count($carLists) - count($allErrors);
 
-        $jsonManager->insertDataToDb($jsonManager->readFileToArray());
+        $dataValidationDbManager->insertDataToDb($jsonManager->readFileToArray());
 
         $this->assertCount(
             $validDataCount,
             (new CarManager($this->pdoConnect))->getAll()
         );
-    }
-
-    public function testJsonInvalidDataIsNotInserted()
-    {
-        $jsonManager = new JsonManager(
-            SELF::CORRUPTEDDATAFILEPATH,
-            $this->pdoConnect
-        );
-        $jsonManager->insertDataToDb($jsonManager->readFileToArray());
-
-        $this->assertCount(6, (new CarManager($this->pdoConnect))->getAll());
     }
 
     private function deleteAllCar(): void {

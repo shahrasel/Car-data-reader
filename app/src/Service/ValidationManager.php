@@ -15,7 +15,7 @@ class ValidationManager
         }
         if (array_key_exists("year", $data) && !empty($data['year'])) {
             if ( ((int) $data['year']) <=0 ) {
-                $error[] = "Year is not valid";
+                $error[] = "Year is invalid";
             } else {
                 $isError = $this->validateStrLen('Year', $data['year'], 4, 4);
                 if ($isError) {
@@ -49,7 +49,7 @@ class ValidationManager
         }
         if (array_key_exists("door_no", $data) && !empty($data['door_no'])) {
             if ( ((int) $data['door_no']) <=0 ) {
-                $error[] = "Door number is not valid";
+                $error[] = "Door number is invalid";
             } else {
                 $isError = $this->validateStrLen(
                     'Door number',
@@ -68,7 +68,7 @@ class ValidationManager
         }
         if (array_key_exists("seat_no", $data) && !empty($data['seat_no'])) {
             if ( ((int) $data['seat_no']) <=0 ) {
-                $error[] = "Seat number is not valid";
+                $error[] = "Seat number is invalid";
             } else {
                 $isError = $this->validateStrLen(
                     'Seat number',

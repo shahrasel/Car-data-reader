@@ -35,8 +35,8 @@ class Bootstrap
     {
         try {
             $csvManager = new CsvManager(__DIR__ . '/Resource/' .$filename, $pdoConnection);
-            $csvArray = $csvManager->readFileToArray();
-            return $csvManager->insertDataToDb($csvArray);
+            $csvManager->readFileToArray();
+            return $csvManager->fileDataToDb();
         } catch (Exception $e) {
             return $e->getMessage();
         }
@@ -46,8 +46,8 @@ class Bootstrap
     {
         try {
             $jsonManager = new JsonManager(__DIR__ . '/Resource/' .$filename, $pdoConnection);
-            $jsonArray = $jsonManager->readFileToArray();
-            return $jsonManager->insertDataToDb($jsonArray);
+            $jsonManager->readFileToArray();
+            return $jsonManager->fileDataToDb();
         } catch (Exception $e) {
             return $e->getMessage();
         }

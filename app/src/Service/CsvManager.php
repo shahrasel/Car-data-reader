@@ -3,17 +3,20 @@
 namespace Service;
 
 use Exception;
+use mapper\ArrayMapper;
 use PDO;
 
-class CsvManager implements ResourceDataManagerInterfeace
+class CsvManager
 {
     public string $filePath;
     private PDO $pdoConnection;
+    private DataValidatorDbManager $dataValidatorDbManager;
 
     public function __construct(string $filePath, PDO $pdoConnection)
     {
         $this->filePath = $filePath;
         $this->pdoConnection = $pdoConnection;
+        $this->dataValidatorDbManager = new DataValidatorDbManager($filePath,$pdoConnection);
     }
 
     /**
@@ -36,43 +39,9 @@ class CsvManager implements ResourceDataManagerInterfeace
         }
     }
 
-    /**
-     * @throws Exception
-     */
-    public function insertDataToDb(array $carLists): array | bool
+    public function fileDataToDb(): bool|array
     {
-        $count = 0;
-        $allErrors = [];
-        foreach($carLists as $carList) {
-            $count++;
-            $carUniKeyList = array_combine(
-                CarManager::arrayKeyReplace(array_keys($carList)), $carList
-            );
-
-            $errors = $this->dataValidation($carUniKeyList);
-
-            if ( ! empty($errors)) {
-                $errors[] = "$this->filePath has an error at index: $count 
-                and couldn't be inserted";
-                $allErrors[] = $errors;
-            } else {
-                $carManager = new CarManager($this->pdoConnection);
-                $carManager->create($carUniKeyList);
-            }
-        }
-        if (!empty($allErrors)) {
-            return $allErrors;
-        } else {
-            return false;
-        }
-    }
-
-    public function dataValidation(array $carUniKeyList): array
-    {
-        $validationManager = new ValidationManager();
-        return $validationManager->validateData(
-            $carUniKeyList,
-            $this->pdoConnection
-        );
+        $csvData = $this->readFileToArray();
+        return $this->dataValidatorDbManager->insertDataToDb($csvData);
     }
 }

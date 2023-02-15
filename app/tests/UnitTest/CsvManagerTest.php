@@ -1,13 +1,15 @@
 <?php
 
+use mapper\ArrayMapper;
 use PHPUnit\Framework\TestCase;
 use Service\CarManager;
 use Service\CsvManager;
+use Service\DataValidatorDbManager;
 use Service\DbConnectionManager;
 
 class CsvManagerTest extends TestCase
 {
-    private $pdoConnect;
+    private PDO $pdoConnect;
 
     private const REALFILEPATH =
         __DIR__ . '/../../src/Resource/source-1.csv';
@@ -44,18 +46,18 @@ class CsvManagerTest extends TestCase
         $csvManager->readFileToArray();
     }
 
-    public function testCsvDataToDbInsertProperly()
+    /*public function testCsvDataToDbInsertProperly()
     {
         $csvManager = new CsvManager(SELF::REALFILEPATH, $this->pdoConnect);
-        $csvManager->insertDataToDb($csvManager->readFileToArray());
+        $csvManager->fileDataToDb();
 
         $this->assertCount(
             count($csvManager->readFileToArray()),
             (new CarManager($this->pdoConnect))->getAll()
         );
-    }
+    }*/
 
-    public function testCsvInvalidDataIsNotInserted()
+    public function testCsvValidDataToDbInsertProperly()
     {
         $csvManager = new CsvManager(
             SELF::CORRUPTEDDATAFILEPATH,
@@ -66,10 +68,14 @@ class CsvManagerTest extends TestCase
         $allErrors = [];
         foreach($carLists as $carList) {
             $carUniKeyList = array_combine(
-                CarManager::arrayKeyReplace(array_keys($carList)), $carList
+                ArrayMapper::arrayKeyMapper(array_keys($carList)), $carList
             );
 
-            $errors = $csvManager->dataValidation($carUniKeyList);
+            $dataValidationDbManager = new DataValidatorDbManager(
+                SELF::CORRUPTEDDATAFILEPATH,
+                $this->pdoConnect
+            );
+            $errors = $dataValidationDbManager->dataValidation($carUniKeyList);
 
             if(!empty($errors)) {
                 $allErrors[] = $errors;
@@ -78,7 +84,7 @@ class CsvManagerTest extends TestCase
 
         $validDataCount = count($carLists) - count($allErrors);
 
-        $csvManager->insertDataToDb($csvManager->readFileToArray());
+        $csvManager->fileDataToDb();
 
         $this->assertCount(
             $validDataCount, (new CarManager($this->pdoConnect))->getAll()

@@ -55,9 +55,8 @@ class ValidationManagerTest extends TestCase
         ' 50 characters', $errors);
         $this->assertContains('Model is too long, maximum is'.
         ' 50 characters', $errors);
-        $this->assertContains('Door number can\'t be negative', $errors);
-        $this->assertContains('Seat number is too long, maximum'.
-        ' is 2 characters', $errors);
+        $this->assertContains("Door number is invalid", $errors);
+        $this->assertContains('Seat number is invalid', $errors);
         $this->assertContains('Transmission is too long, maximum is'.
         ' 50 characters', $errors);
         $this->assertContains('Fuel type is too long, maximum is'.
