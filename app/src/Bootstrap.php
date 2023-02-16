@@ -5,6 +5,9 @@ use Service\CsvManager;
 use Service\DbConnectionManager;
 use Service\JsonManager;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Bootstrap
 {
     public function loadDotEnv()
@@ -31,22 +34,20 @@ class Bootstrap
         return (new DbConnectionManager($_ENV['MYSQL_HOST'], $_ENV['MYSQL_TEST_PORT'], $_ENV['MYSQL_TEST_DATABASE'], $_ENV['MYSQL_TEST_ROOT_USER'], $_ENV['MYSQL_TEST_ROOT_PASSWORD']))->DbConnection();
     }
 
-    public function readCsv(string $filename, PDO $pdoConnection): array|string
+    public function readCsvToArray(string $filename, PDO $pdoConnection): array|string
     {
         try {
             $csvManager = new CsvManager(__DIR__ . '/Resource/' .$filename, $pdoConnection);
-            $csvManager->readFileToArray();
             return $csvManager->fileDataToDb();
         } catch (Exception $e) {
             return $e->getMessage();
         }
     }
 
-    public function readJson(string $filename, PDO $pdoConnection): array|string
+    public function readJsonToArray(string $filename, PDO $pdoConnection): array|string
     {
         try {
             $jsonManager = new JsonManager(__DIR__ . '/Resource/' .$filename, $pdoConnection);
-            $jsonManager->readFileToArray();
             return $jsonManager->fileDataToDb();
         } catch (Exception $e) {
             return $e->getMessage();
@@ -110,9 +111,9 @@ class Bootstrap
     public function importFilesData(PDO $pdoConnection)
     {
         $errorHandlerArray = [];
-        $csvErrors = $this->readCsv('source-1.csv', $pdoConnection);
-        $jsonErrors1 = $this->readJson('source-2.json', $pdoConnection);
-        $jsonErrors2 = $this->readJson('source-3.json', $pdoConnection);
+        $csvErrors = $this->readCsvToArray('source-1.csv', $pdoConnection);
+        $jsonErrors1 = $this->readJsonToArray('source-2.json', $pdoConnection);
+        $jsonErrors2 = $this->readJsonToArray('source-3.json', $pdoConnection);
 
         if (!empty($csvErrors) || !empty($jsonErrors1) || !empty($jsonErrors2)) {
             if (!empty($csvErrors))
